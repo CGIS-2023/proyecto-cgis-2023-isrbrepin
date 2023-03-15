@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resources([
+    //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
+    //'medicos' => MedicoController::class,
+    'salas' => SalaController::class,
+    //'especialidads' => EspecialidadController::class,
+    //'pacientes' => PacienteController::class,
+]);
