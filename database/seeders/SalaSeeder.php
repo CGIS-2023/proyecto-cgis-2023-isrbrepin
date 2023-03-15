@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SalaSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class SalaSeeder extends Seeder
             [
                 //'medico_id' => 1,
                 //'paciente_id' => 1,
-                'fecha_hora_inicio' => '2023-02-30 10:15:00',
+                'fecha_hora_inicio' => '2021-05-30 10:15:00',
                 'planta' => "3",
                 'numero_sala' => "135",
             ],
