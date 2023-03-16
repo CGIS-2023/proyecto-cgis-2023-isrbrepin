@@ -34,7 +34,8 @@ class SalaController extends Controller
      */
     public function create()
     {
-        //
+        $salas = Sala::all();
+        return view('salas/create', ['salas' => $salas]);
     }
 
     /**
@@ -43,9 +44,18 @@ class SalaController extends Controller
      * @param  \App\Http\Requests\StoreSalaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSalaRequest $request)
+    public function store(Request $request)
     {
-        //
+        $reglas = [
+            'fecha_hora_inicio' => 'required|date',
+            'planta' => 'required|string|max:255',
+            'numero_sala' => 'required|string|max:255',
+        ];
+        $this->validate($request, $reglas);
+        $sala = new Sala($request->all());
+        $sala->save();
+        session()->flash('success', 'Sala creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('salas.index');
     }
 
     /**

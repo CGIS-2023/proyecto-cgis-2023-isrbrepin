@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex items-center mt-4 ml-2">
+            <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('salas.create') }}">
                         <x-button type="subit" class="ml-4">
                                 {{ __('Crear sala') }}
@@ -22,6 +22,8 @@
                             <th class="py-3 px-6 text-left">Fecha</th>
                             <th class="py-3 px-6 text-left">Planta</th>
                             <th class="py-3 px-6 text-left">Numero de Sala</th>
+                            <th class="py-3 px-6 text-left">Ubicación</th>
+
                             <th></th>
                         </tr>
                         </thead>
@@ -42,6 +44,11 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$sala->numero_sala}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sala->planta_numero}}</span>
                                     </div>
                                 </td>
 
