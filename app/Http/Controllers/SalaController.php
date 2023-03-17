@@ -76,19 +76,28 @@ class SalaController extends Controller
      */
     public function edit(Sala $sala)
     {
-        //
+        return view('salas/edit', ['sala' => $sala]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSalaRequest  $request
+     * @param  Illuminate\Http\Request;  $request
      * @param  \App\Models\Sala  $sala
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSalaRequest $request, Sala $sala)
+    public function update(Request $request, Sala $sala)
     {
-        //
+        $reglas = [
+            'fecha_hora_inicio' => 'required|date',
+            'planta' => 'required|string|max:255',
+            'numero_sala' => 'required|string|max:255',
+        ];
+        $this->validate($request, $reglas);
+        $sala->fill($request->all());
+        $sala->save();
+        session()->flash('success', 'Sala modificada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('salas.index');
     }
 
     /**
