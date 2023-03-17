@@ -12,6 +12,8 @@
                             </x-nav-link>
                 </div>
             </div>
+            <!-- Settings Dropdown -->
+                        <!-- Authentication -->
         </div>
     </div>
 </nav>
