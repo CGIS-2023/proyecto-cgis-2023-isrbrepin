@@ -108,6 +108,12 @@ class SalaController extends Controller
      */
     public function destroy(Sala $sala)
     {
-        //
+        if($sala->delete()) {
+            session()->flash('success', 'Sala borrada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        }
+        else{
+            session()->flash('warning', 'La sala no pudo borrarse. Es probable que se deba a que tenga asociada información como salas que dependen de él.');
+        }
+        return redirect()->route('salas.index');
     }
 }
