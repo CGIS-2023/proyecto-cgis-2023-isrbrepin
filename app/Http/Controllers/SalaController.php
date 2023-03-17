@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSalaRequest;
-use App\Http\Requests\UpdateSalaRequest;
+use Illuminate\Http\Request;
 use App\Models\Sala;
 
 class SalaController extends Controller
@@ -41,7 +40,7 @@ class SalaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSalaRequest  $request
+     * @param  Illuminate\Http\Request;  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -66,7 +65,7 @@ class SalaController extends Controller
      */
     public function show(Sala $sala)
     {
-        //
+        return view('salas/show', ['sala' => $sala]);
     }
 
     /**
