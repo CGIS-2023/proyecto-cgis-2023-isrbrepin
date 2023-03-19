@@ -17,6 +17,13 @@ use App\Http\Controllers\SalaController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Route::resources([
     //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
     //'medicos' => MedicoController::class,

@@ -18,7 +18,7 @@ class SalaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class SalaPolicy
      */
     public function view(User $user, Sala $sala)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class SalaPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class SalaPolicy
      */
     public function update(User $user, Sala $sala)
     {
-        //
+        return true;
     }
 
     /**
@@ -65,7 +65,7 @@ class SalaPolicy
      */
     public function delete(User $user, Sala $sala)
     {
-        //
+        return true;
     }
 
     /**
@@ -75,20 +75,4 @@ class SalaPolicy
      * @param  \App\Models\Sala  $sala
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Sala $sala)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Sala  $sala
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Sala $sala)
-    {
-        //
-    }
 }

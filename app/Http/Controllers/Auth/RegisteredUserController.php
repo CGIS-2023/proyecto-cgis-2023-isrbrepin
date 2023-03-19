@@ -46,12 +46,12 @@ class RegisteredUserController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'dni' => 'required|string|max:10|min:8|unique:users',
             'password' => 'required|string|confirmed|min:8',
             'tipo_usuario_id' => 'required|numeric'
         ];
 
         $tipo_usuario_id = intval($request->tipo_usuario_id);
+        /*
         if($tipo_usuario_id == 1){
             //Médico
             $reglas_medico = ['telefono' => 'required|string|max:255',
@@ -67,12 +67,14 @@ class RegisteredUserController extends Controller
             $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', new Nuhsa()]];
             $rules = array_merge($reglas_paciente, $rules);
         }
+        */
         $request->validate($rules);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        /*
         if($tipo_usuario_id == 1) {
             //Médico
             $medico = new Medico($request->all());
@@ -85,6 +87,7 @@ class RegisteredUserController extends Controller
             $paciente->user_id = $user->id;
             $paciente->save();
         }
+        */
         $user->fresh();
         Auth::login($user);
         event(new Registered($user));
