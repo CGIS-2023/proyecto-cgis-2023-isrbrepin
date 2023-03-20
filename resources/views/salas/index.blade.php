@@ -23,6 +23,7 @@
                             <th class="py-3 px-6 text-left">Planta</th>
                             <th class="py-3 px-6 text-left">Numero de Sala</th>
                             <th class="py-3 px-6 text-left">Ubicación</th>
+                            <th class="py-3 px-6 text-left">Número de Camillas</th>
 
                             <th></th>
                         </tr>
@@ -49,6 +50,11 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$sala->planta_numero}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sala->numero_camillas}}</span>
                                     </div>
                                 </td>
 

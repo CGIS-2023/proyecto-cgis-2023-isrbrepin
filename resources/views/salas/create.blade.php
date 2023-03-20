@@ -50,6 +50,12 @@
                                 <x-input id="numero_sala" type="text" name="numero_sala" :value="old('numero_sala')" required autofocus />
                         </div>
 
+                        <div class="mt-4">
+                                <x-label for="numero_camillas" :value="__('Numero Camillas')" />
+
+                                <x-input id="numero_camillas" type="text" name="numero_camillas" :value="old('numero_camillas')" required autofocus />
+                        </div>
+
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">
                                 <a href={{route('salas.index')}}>

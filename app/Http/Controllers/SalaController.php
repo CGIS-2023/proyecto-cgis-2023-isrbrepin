@@ -49,6 +49,7 @@ class SalaController extends Controller
             'fecha_hora_inicio' => 'required|date',
             'planta' => 'required|string|max:255',
             'numero_sala' => 'required|string|max:255',
+            'numero_camillas' => 'required|numeric|min:0',
         ];
         $this->validate($request, $reglas);
         $sala = new Sala($request->all());
@@ -92,6 +93,7 @@ class SalaController extends Controller
             'fecha_hora_inicio' => 'required|date',
             'planta' => 'required|string|max:255',
             'numero_sala' => 'required|string|max:255',
+            'numero_camillas' => 'required|numeric|min:0',
         ];
         $this->validate($request, $reglas);
         $sala->fill($request->all());

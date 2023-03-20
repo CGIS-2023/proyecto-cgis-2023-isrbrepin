@@ -40,15 +40,21 @@
                         </div>
 
                         <div class="mt-4">
-                                <x-label for="fecha_hora_inicio" :value="__('Planta')" />
+                                <x-label for="planta" :value="__('Planta')" />
 
                                 <x-input id="planta" type="text" name="planta" :value="$sala->planta" required autofocus />
                         </div>
                         
                         <div class="mt-4">
-                                <x-label for="fecha_hora_inicio" :value="__('Numero de Sala')" />
+                                <x-label for="numero_sala" :value="__('Numero de Sala')" />
 
                                 <x-input id="numero_sala" type="text" name="numero_sala" :value="$sala->numero_sala" required autofocus />
+                        </div>
+
+                        <div class="mt-4">
+                                <x-label for="numero_camillas" :value="__('Numero de Camillas')" />
+
+                                <x-input id="numero_camillas" type="numeric" name="numero_camillas" :value="$sala->numero_camillas" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

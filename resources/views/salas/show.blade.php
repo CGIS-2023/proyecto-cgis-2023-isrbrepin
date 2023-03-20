@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="fecha_hora_inicio" :value="__('Planta')" />
+                            <x-label for="planta" :value="__('Planta')" />
 
                             <x-input id="planta" class="block mt-1 w-full"
                                      type="text"
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="fecha_hora_inicio" :value="__('Numero de Sala')" />
+                            <x-label for="numero_sala" :value="__('Numero de Sala')" />
 
                             <x-input id="numero_sala" class="block mt-1 w-full"
                                      type="text"
@@ -62,13 +62,24 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="fecha_hora_inicio" :value="__('Ubicación')" />
+                            <x-label for="planta_numero" :value="__('Ubicación')" />
 
                             <x-input id="planta_numero" class="block mt-1 w-full"
                                      type="text"
                                      name="planta_numero"
                                      disabled
                                      :value="$sala->planta_numero"
+                                     required />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-label for="numero_camillas" :value="__('Número de Camillas')" />
+
+                            <x-input id="numero_camillas" class="block mt-1 w-full"
+                                     type="text"
+                                     name="numero_camillas"
+                                     disabled
+                                     :value="$sala->numero_camillas"
                                      required />
                         </div>
 

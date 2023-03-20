@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('fecha_hora_inicio');
             $table->string('planta');
             $table->string('numero_sala');
+            $table->integer('numero_camillas');
         });
     }
 
