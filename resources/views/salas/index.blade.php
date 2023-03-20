@@ -23,7 +23,7 @@
                             <th class="py-3 px-6 text-left">Planta</th>
                             <th class="py-3 px-6 text-left">Numero de Sala</th>
                             <th class="py-3 px-6 text-left">Ubicación</th>
-                            <th class="py-3 px-6 text-left">Número de Camillas</th>
+                            <th class="py-3 px-6 text-left">Número Camillas</th>
 
                             <th></th>
                         </tr>

@@ -54,7 +54,7 @@
                         <div class="mt-4">
                                 <x-label for="numero_camillas" :value="__('Numero de Camillas')" />
 
-                                <x-input id="numero_camillas" type="numeric" name="numero_camillas" :value="$sala->numero_camillas" required autofocus />
+                                <x-input id="numero_camillas" type="text" name="numero_camillas" :value="$sala->numero_camillas" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
