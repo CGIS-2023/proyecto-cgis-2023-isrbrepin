@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalaController;
+use App\Http\Controllers\CeladorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,5 @@ Route::resources([
     //'medicos' => MedicoController::class,
     'salas' => SalaController::class,
     //'especialidads' => EspecialidadController::class,
-    //'pacientes' => PacienteController::class,
+    'celadors' => CeladorController::class,
 ]);
