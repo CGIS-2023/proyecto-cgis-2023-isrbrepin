@@ -25,10 +25,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resources([
-    //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
-    //'medicos' => MedicoController::class,
-    'salas' => SalaController::class,
-    //'especialidads' => EspecialidadController::class,
-    'celadors' => CeladorController::class,
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+        //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
+        //'medicos' => MedicoController::class,
+        'salas' => SalaController::class,
+        //'especialidads' => EspecialidadController::class,
+        'celadors' => CeladorController::class,
+    ]);
+});
