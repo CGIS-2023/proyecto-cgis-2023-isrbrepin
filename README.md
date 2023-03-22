@@ -136,3 +136,4 @@ El sistema además deberá mostrar un mensaje de error en cada uno de los casos 
 **RN-007.** Una camilla no podrá superar la fecha de fin de vida útil.
 
 # 5. Modelo conceptual UML
+![Modelo.png](public%2FModelo.png)
