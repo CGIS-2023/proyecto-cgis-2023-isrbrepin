@@ -19,7 +19,8 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">Apellido</th>
+                            <th class="py-3 px-6 text-left">ID</th>
+                            <th class="py-3 px-6 text-left">Nombre Completo</th>
                             <th class="py-3 px-6 text-left">Fecha de Nacimiento</th>
                             <th class="py-3 px-6 text-left">Telefono</th>
                             <th class="py-3 px-6 text-left">Fecha de Contratación</th>
@@ -34,7 +35,12 @@
                             <tr class="border-b border-gray-200">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$celador->apellido}}</span>
+                                        <span class="font-medium">{{$celador->id}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$celador->nombre_apellido}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">

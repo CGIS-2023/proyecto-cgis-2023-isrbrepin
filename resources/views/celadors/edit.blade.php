@@ -29,10 +29,11 @@
                     <form method="POST" action="{{ route('celadors.update', $celador->id) }}">
                         @csrf
                         @method('put')
+
                         <div class="mt-4">
                                 <x-label for="apellido" :value="__('Apellido')" />
 
-                                <x-input id="apellido" type="text" name="apellido" :value="old('apellido')" required autofocus />
+                                <x-input id="apellido" type="text" name="apellido" :value="$celador->apellido" required autofocus />
                         </div>
 
                         <div class="mt-4">
@@ -41,14 +42,14 @@
                             <x-input id="fecha_nacimiento" class="block mt-1 w-full"
                                      type="date"
                                      name="fecha_nacimiento"
-                                     :value="old('fecha_nacimiento')"
+                                     :value="$celador->fecha_nacimiento->format('Y-m-d')"
                                      required />
                         </div>
 
                         <div class="mt-4">
                                 <x-label for="telefono" :value="__('Telefono')" />
 
-                                <x-input id="telefono" type="text" name="telefono" :value="old('telefono')" required autofocus />
+                                <x-input id="telefono" type="text" name="telefono" :value="$celador->telefono" required autofocus />
                         </div>
 
                         <div class="mt-4">
@@ -57,14 +58,14 @@
                             <x-input id="fecha_contratacion" class="block mt-1 w-full"
                                      type="date"
                                      name="fecha_contratacion"
-                                     :value="old('fecha_contratacion')"
+                                     :value="$celador->fecha_contratacion->format('Y-m-d')"
                                      required />
                         </div>
                         
                         <div class="mt-4">
                                 <x-label for="sueldo" :value="__('Sueldo')" />
 
-                                <x-input id="sueldo" type="text" name="sueldo" :value="old('sueldo')" required autofocus />
+                                <x-input id="sueldo" type="text" name="sueldo" :value="$celador->sueldo" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

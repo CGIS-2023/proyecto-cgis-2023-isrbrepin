@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sala;
+use App\Models\Celador;
 
 class SalaController extends Controller
 {
@@ -77,7 +78,8 @@ class SalaController extends Controller
      */
     public function edit(Sala $sala)
     {
-        return view('salas/edit', ['sala' => $sala]);
+        $celadors = Celador::all();
+        return view('salas/edit', ['sala' => $sala, 'celadors' => $celadors]);
     }
 
     /**

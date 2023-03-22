@@ -17,6 +17,14 @@ class Celador extends Model
         'fecha_contratacion' => 'datetime:Y-m-d',
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    //public function salas(){
+    //    return $this->hasMany(Sala::class); // one to many
+    //}
+
     //public function salas(){
     //    return $this->hasMany(Cita::salas);
     //}
@@ -44,10 +52,10 @@ class Celador extends Model
         return Carbon::now()->diffInDays($this->fecha_contratacion);
     }
 
-    //public function getNombreApellidoAttribute()
-    //{
-    //    return $user->name . $this->apellido;
-    //}
+    public function getNombreApellidoAttribute()
+    {
+        return $this->user->name . " " . $this->apellido;
+    }
 
     //public function user(){
     //    return $this->belongsTo(User::class);

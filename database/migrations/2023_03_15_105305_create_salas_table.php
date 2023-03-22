@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('planta');
             $table->string('numero_sala');
             $table->integer('numero_camillas');
+            $table->foreignId('celador_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->date('fecha_contratacion');
             $table->double('sueldo');
+            $table->foreignId('user_id')->unique()->constrained()->onDelete('cascade');
             $table->softDeletes();
         });
     }

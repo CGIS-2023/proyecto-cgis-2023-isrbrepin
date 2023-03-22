@@ -19,11 +19,13 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">ID</th>
+                            <th class="py-3 px-6 text-left">Celador Encargado</th>
                             <th class="py-3 px-6 text-left">Fecha inicio</th>
                             <th class="py-3 px-6 text-left">Planta</th>
                             <th class="py-3 px-6 text-left">Numero</th>
                             <th class="py-3 px-6 text-left">Ubicación</th>
-                            <th class="py-3 px-6 text-left">Numero de Camillas</th>
+                            <th class="py-3 px-6 text-left">Nº Camillas</th>
 
                             <th></th>
                         </tr>
@@ -32,6 +34,16 @@
 
                         @foreach ($salas as $sala)
                             <tr class="border-b border-gray-200">
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sala->id}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sala->celador->nombre_apellido}}</span>
+                                    </div>
+                                </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$sala->fecha_hora_inicio->format('d/m/Y H:i')}}</span>
