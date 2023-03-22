@@ -28,6 +28,30 @@
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form method="POST" action="{{ route('salas.store') }}">
                         @csrf
+
+                        <div class="mt-4">
+                            <x-label for="celador_id" :value="__('Celador Encargado')" />
+
+                            @isset($celador)
+                                <x-input id="celador_id" class="block mt-1 w-full"
+                                         type="hidden"
+                                         name="celador_id"
+                                         :value="old(nombre_apellido)"
+                                         required />
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled
+                                         value="{{$celador->nombre_apellido}}"
+                                />
+                            @else
+                                <x-select id="celador_id" name="celador_id" required>
+                                    <option value="">{{__('Elige un celador')}}</option>
+                                    @foreach ($celadors as $celador)
+                                        <option value="{{$celador->id}}" @if ($sala->celador_id == $celador->id) selected @endif>{{$celador->nombre_apellido}}</option>
+                                    @endforeach
+                                </x-select>
+                            @endisset
+                        </div>
                         <div class="mt-4">
                             <x-label for="fecha_hora_inicio" :value="__('Fecha y hora')" />
 

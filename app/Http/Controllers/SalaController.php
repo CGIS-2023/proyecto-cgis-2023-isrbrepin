@@ -32,10 +32,10 @@ class SalaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sala $sala)
     {
-        $salas = Sala::all();
-        return view('salas/create', ['salas' => $salas]);
+        $celadors = Celador::all();
+        return view('salas/create', ['sala' => $sala, 'celadors' => $celadors]);
     }
 
     /**
@@ -52,6 +52,7 @@ class SalaController extends Controller
             'numero_sala' => 'required|string|max:255',
             'numero_camillas' => 'required|numeric|min:0',
         ];
+        $celadors = Celador::all();
         $this->validate($request, $reglas);
         $sala = new Sala($request->all());
         $sala->save();
