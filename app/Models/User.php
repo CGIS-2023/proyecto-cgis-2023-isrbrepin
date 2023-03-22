@@ -41,4 +41,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getTipoUsuarioIdAttribute(){
+        if($this->celador()->exists()){
+            return 2;
+        }
+        else{
+            return 3;
+        }
+    }
+
+    public function getTipoUsuarioAttribute(){
+        $tipos_usuario = [2 => trans('Celador'), 3 => trans('Administrador')];
+        return $tipos_usuario[$this->tipo_usuario_id];
+    }
 }
