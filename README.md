@@ -133,7 +133,8 @@ El sistema además deberá mostrar un mensaje de error en cada uno de los casos 
 
 **RN-006.** No se podrá asignar pacientes a salas completas.
 
-**RN-007.** Una camilla no podrá superar la fecha de fin de vida útil.
+**RN-007.** Las camillas no pueden superar su vida útil, es decir 7 años (En la vida real es de 5 a 10 
+años).
 
 # 5. Modelo conceptual UML
 ![Modelo.png](public%2FModelo.png)
