@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Celador;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class CeladorController extends Controller
 {
@@ -37,18 +39,24 @@ class CeladorController extends Controller
      */
     public function store(Request $request)
     {
-        $reglas = [
-            'apellido' => 'required|string|max:255',
-            'fecha_nacimiento' => 'required|date',
-            'telefono' => 'required|string',
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+            'telefono' => 'required|string|max:255',
             'fecha_contratacion' => 'required|date',
             'sueldo' => 'required|numeric',
-        ];
-        $this->validate($request, $reglas);
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
         $celador = new Celador($request->all());
+        $celador->user_id = $user->id;
         $celador->save();
-        session()->flash('success', 'Celador creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
-        return redirect()->route('celadors.index');
+        session()->flash('success', 'Celador creado correctamente.'); // Si nos da tiempo haremos este mensaje internacionalizable y parametrizable
+        return redirect()->route('celadors.index'); //Te manda al index de nuevo
     }
 
     /**
@@ -83,7 +91,6 @@ class CeladorController extends Controller
     public function update(Request $request, Celador $celador)
     {
         $reglas = [
-            'apellido' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'required|string',
             'fecha_contratacion' => 'required|date',

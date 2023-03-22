@@ -41,13 +41,13 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="nombre_apellido" :value="__('Nombre Completo')" />
+                            <x-label for="name" :value="__('Nombre Completo')" />
 
-                            <x-input id="nombre_apellido" class="block mt-1 w-full"
+                            <x-input id="name" class="block mt-1 w-full"
                                      type="text"
-                                     name="nombre_apellido"
+                                     name="name"
                                      disabled
-                                     :value="$celador->nombre_apellido"
+                                     :value="$celador->user->name"
                                      required />
                         </div>
 

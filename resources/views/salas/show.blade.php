@@ -29,13 +29,13 @@
                         @csrf
                         @method('put')
                         <div class="mt-4">
-                            <x-label for="nombre_apellido" :value="__('Celador Encargado')" />
+                            <x-label for="name" :value="__('Celador Encargado')" />
 
-                            <x-input id="nombre_apellido" class="block mt-1 w-full"
+                            <x-input id="name" class="block mt-1 w-full"
                                      type="text"
-                                     name="nombre_apellido"
+                                     name="name"
                                      disabled
-                                     :value="$sala->celador->nombre_apellido"
+                                     :value="$sala->celador->user->name"
                                      required />
                         </div>
 

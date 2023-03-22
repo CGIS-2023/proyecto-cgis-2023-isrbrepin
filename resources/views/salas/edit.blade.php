@@ -42,13 +42,13 @@
                                 <x-input class="block mt-1 w-full"
                                          type="text"
                                          disabled
-                                         value="{{$celador->nombre_apellido}}"
+                                         value="{{$celador->user->name}}"
                                 />
                             @else
                                 <x-select id="celador_id" name="celador_id" required>
                                     <option value="">{{__('Elige un celador')}}</option>
                                     @foreach ($celadors as $celador)
-                                        <option value="{{$celador->id}}" @if ($sala->celador_id == $celador->id) selected @endif>{{$celador->nombre_apellido}}</option>
+                                        <option value="{{$celador->id}}" @if ($sala->celador_id == $celador->id) selected @endif>{{$celador->user->name}}</option>
                                     @endforeach
                                 </x-select>
                             @endisset

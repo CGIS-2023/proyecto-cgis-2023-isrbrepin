@@ -42,6 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //public function medico()
+    //{
+    //    return $this->hasOne(Medico::class);
+    //}
+
+    public function celador()
+    {
+        return $this->hasOne(Celador::class);
+    }
+
     public function getTipoUsuarioIdAttribute(){
         if($this->celador()->exists()){
             return 2;

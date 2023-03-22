@@ -9,11 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="flex items-center mt-4 ml-2">
+            @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
                     <form method="GET" action="{{ route('salas.create') }}">
                         <x-button type="subit" class="ml-4">
                                 {{ __('Crea sala') }}
                         </x-button>
                     </form>
+                    @endif
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">
@@ -41,7 +43,7 @@
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$sala->celador->nombre_apellido}}</span>
+                                        <span class="font-medium">{{$sala->celador->user->name}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
@@ -81,6 +83,7 @@
                                             </a>
                                         </div>
 
+                                        @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('salas.edit', $sala->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,6 +91,8 @@
                                                 </svg>
                                             </a>
                                         </div>
+                                        @endif
+                                        @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <form id="delete-form-{{$sala->id}}" method="POST" action="{{ route('salas.destroy', $sala->id) }}">
                                                 @csrf
@@ -98,8 +103,8 @@
                                                     </svg>
                                                 </a>
                                             </form>
-
                                         </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

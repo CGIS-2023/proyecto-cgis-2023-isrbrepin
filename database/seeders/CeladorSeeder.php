@@ -17,7 +17,6 @@ class CeladorSeeder extends Seeder
     {
         DB::table('celadors')->insert([
             [
-                'apellido' => "Ramos",
                 'fecha_nacimiento' => "1994-01-01",
                 'telefono' => "601234567",
                 'fecha_contratacion' => "2021-01-01",
@@ -25,7 +24,6 @@ class CeladorSeeder extends Seeder
                 'user_id' => 4,
             ],
             [
-                'apellido' => "Manzano",
                 'fecha_nacimiento' => "1985-05-01",
                 'telefono' => "653234567",
                 'fecha_contratacion' => "2016-01-01",

@@ -9,7 +9,7 @@ class Celador extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['apellido', 'fecha_nacimiento', 'telefono', 'fecha_contratacion', 'sueldo'];
+    protected $fillable = ['fecha_nacimiento', 'telefono', 'fecha_contratacion', 'sueldo'];
 
 
     protected $casts = [
@@ -21,9 +21,9 @@ class Celador extends Model
         return $this->belongsTo(User::class);
     }
 
-    //public function salas(){
-    //    return $this->hasMany(Sala::class); // one to many
-    //}
+    public function salas(){
+        return $this->hasMany(Sala::class); // one to many
+    }
 
     //public function salas(){
     //    return $this->hasMany(Cita::salas);
@@ -50,11 +50,6 @@ class Celador extends Model
 
     public function getDiasContratadoAttribute(){
         return Carbon::now()->diffInDays($this->fecha_contratacion);
-    }
-
-    public function getNombreApellidoAttribute()
-    {
-        return $this->user->name . " " . $this->apellido;
     }
 
     //public function user(){

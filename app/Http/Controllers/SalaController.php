@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sala;
 use App\Models\Celador;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class SalaController extends Controller
 {
@@ -16,14 +18,13 @@ class SalaController extends Controller
     public function index()
     {
         $salas = Sala::orderBy('fecha_hora_inicio', 'desc')->paginate(25);
-        /*
-        if(Auth::user()->tipo_usuario_id == 1){
-            $salas = Auth::user()->medico->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
+        
+        //if(Auth::user()->tipo_usuario_id == 1){
+        //    $salas = Auth::user()->medico->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
+        //}
+        if(Auth::user()->tipo_usuario_id == 2){
+            $salas = Auth::user()->celador->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
         }
-        elseif(Auth::user()->tipo_usuario_id == 2){
-            $salas = Auth::user()->paciente->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
-        }
-        */
         return view('/salas/index', ['salas' => $salas]);
     }
 
@@ -35,6 +36,9 @@ class SalaController extends Controller
     public function create(Sala $sala)
     {
         $celadors = Celador::all();
+        if(Auth::user()->tipo_usuario_id == 2) {
+            return view('salas/create', ['celador' => Auth::user()->celador]);
+        }
         return view('salas/create', ['sala' => $sala, 'celadors' => $celadors]);
     }
 
@@ -52,6 +56,14 @@ class SalaController extends Controller
             'numero_sala' => 'required|string|max:255',
             'numero_camillas' => 'required|numeric|min:0',
         ];
+        if(Auth::user()->tipo_usuario_id == 2){
+            $reglas_celador = ['celador_id' => ['required', 'exists:celadors,id', Rule::in(Auth::user()->celador->id)]];
+            $reglas = array_merge($reglas_celador, $reglas);
+        }
+        else{
+            $reglas_generales = ['celador_id' => ['required', 'exists:celadors,id']];
+            $reglas = array_merge($reglas_generales, $reglas);
+        }
         $celadors = Celador::all();
         $this->validate($request, $reglas);
         $sala = new Sala($request->all());

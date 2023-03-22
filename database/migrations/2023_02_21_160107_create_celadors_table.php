@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('celadors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('apellido');
             $table->date('fecha_nacimiento');
             $table->string('telefono');
             $table->date('fecha_contratacion');

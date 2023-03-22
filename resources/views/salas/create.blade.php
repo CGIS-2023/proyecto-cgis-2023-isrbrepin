@@ -29,6 +29,9 @@
                     <form method="POST" action="{{ route('salas.store') }}">
                         @csrf
 
+                        
+
+                        @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
                         <div class="mt-4">
                             <x-label for="celador_id" :value="__('Celador Encargado')" />
 
@@ -36,22 +39,24 @@
                                 <x-input id="celador_id" class="block mt-1 w-full"
                                          type="hidden"
                                          name="celador_id"
-                                         :value="old(nombre_apellido)"
+                                         :value="old(name)"
                                          required />
                                 <x-input class="block mt-1 w-full"
                                          type="text"
                                          disabled
-                                         value="{{$celador->nombre_apellido}}"
+                                         value="{{$celador->user->name}}"
                                 />
                             @else
                                 <x-select id="celador_id" name="celador_id" required>
                                     <option value="">{{__('Elige un celador')}}</option>
                                     @foreach ($celadors as $celador)
-                                        <option value="{{$celador->id}}" @if ($sala->celador_id == $celador->id) selected @endif>{{$celador->nombre_apellido}}</option>
+                                        <option value="{{$celador->id}}" @if ($sala->celador_id == $celador->id) selected @endif>{{$celador->user->name}}</option>
                                     @endforeach
                                 </x-select>
                             @endisset
                         </div>
+                                @endif
+                        
                         <div class="mt-4">
                             <x-label for="fecha_hora_inicio" :value="__('Fecha y hora')" />
 
