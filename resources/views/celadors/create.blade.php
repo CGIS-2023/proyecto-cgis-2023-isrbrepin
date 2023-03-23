@@ -29,7 +29,7 @@
                     <form method="POST" action="{{ route('celadors.store') }}">
                         @csrf
 
-                        <div>
+                            <div>
                                 <x-label for="name" :value="__('Nombre')" />
 
                                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />

@@ -46,6 +46,39 @@
                                 name="password_confirmation" required />
             </div>
 
+            <div class="mt-4">
+                            <x-label for="fecha_nacimiento" :value="__('Fecha de Nacimiento')" />
+
+                            <x-input id="fecha_nacimiento" class="block mt-1 w-full"
+                                     type="date"
+                                     name="fecha_nacimiento"
+                                     :value="old('fecha_nacimiento')"
+                                     required />
+                        </div>
+
+                        <div class="mt-4">
+                                <x-label for="telefono" :value="__('Telefono')" />
+
+                                <x-input id="telefono" type="text" name="telefono" :value="old('telefono')" required autofocus />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-label for="fecha_contratacion" :value="__('Fecha de Contratacion')" />
+
+                            <x-input id="fecha_contratacion" class="block mt-1 w-full"
+                                     type="date"
+                                     name="fecha_contratacion"
+                                     :value="old('fecha_contratacion')"
+                                     required />
+                        </div>
+                        
+                        <div class="mt-4">
+                                <x-label for="sueldo" :value="__('Sueldo')" />
+
+                                <x-input id="sueldo" type="text" name="sueldo" :value="old('sueldo')" required autofocus />
+                        </div>
+
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
