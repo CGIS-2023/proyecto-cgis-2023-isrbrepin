@@ -120,3 +120,22 @@ class CeladorController extends Controller
         return redirect()->route('celador.index');
     }
 }
+/*
+    if($request->input('profesion_id')){
+        $sanitarios_query->where()
+    }
+    $sanitarios = $sanitarios_query->paginate(25);
+    return view('/sanitarios/index', ['sanitarios' => $sanitarios]);
+
+    public function paginaA()
+{
+    session(['pagina_origen' => 'A']);
+    return view('pagina_a');
+}
+
+public function paginaB()
+{
+    session(['pagina_origen' => 'B']);
+    return view('pagina_b');
+}
+*/
