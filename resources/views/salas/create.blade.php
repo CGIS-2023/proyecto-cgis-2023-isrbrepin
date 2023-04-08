@@ -34,7 +34,7 @@
                         @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
                         <div class="mt-4">
                             <x-label for="celador_id" :value="__('Celador Encargado')" />
-
+                    
                             @isset($celador)
                                 <x-input id="celador_id" class="block mt-1 w-full"
                                          type="hidden"

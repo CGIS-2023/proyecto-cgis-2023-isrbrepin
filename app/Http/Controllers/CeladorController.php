@@ -67,6 +67,7 @@ class CeladorController extends Controller
      */
     public function show(Celador $celador)
     {
+        $celadors = Celador::all();
         return view('celadors/show', ['celador' => $celador]);
     }
 
