@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalaController;
+use App\Http\Controllers\CeladorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    Route::resources([
+        //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
+        //'medicos' => MedicoController::class,
+        'salas' => SalaController::class,
+        //'especialidads' => EspecialidadController::class,
+        'celadors' => CeladorController::class,
+    ]);
 });
