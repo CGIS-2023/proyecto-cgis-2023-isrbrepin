@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateSalaCamillaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('camillas', function (Blueprint $table) {
+        Schema::create('sala_camilla', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->dateTime('inicio');
+            $table->dateTime('fin');
+            $table->foreignId('sala_id')->constrained()->onDelete('cascade');
+            $table->foreignId('camilla_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('camillas');
+        Schema::dropIfExists('sala_camilla');
     }
-};
+}

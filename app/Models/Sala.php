@@ -18,10 +18,11 @@ class Sala extends Model
     public function medico(){
         return $this->belongsTo(Medico::class);
     }
-    public function medicamentos(){
-        return $this->belongsToMany(Medicamento::class)->using(CitaMedicamentoPivot::class)->withPivot('tomas_dia', 'comentarios', 'inicio', 'fin');
-    }
     */
+    public function camillas(){
+        return $this->belongsToMany(Camilla::class)->using(SalaCamillaPivot::class)->withPivot('inicio', 'fin');
+    }
+    
 
     public function celador(){
         return $this->belongsTo(Celador::class);

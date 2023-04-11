@@ -25,10 +25,6 @@ class Celador extends Model
         return $this->hasMany(Sala::class); // one to many
     }
 
-    //public function salas(){
-    //    return $this->hasMany(Cita::salas);
-    //}
-
     //public function medicos(){
     //    return $this->hasManyThrough(Medico::class, Sala::class);
     //}
@@ -52,7 +48,4 @@ class Celador extends Model
         return Carbon::now()->diffInDays($this->fecha_contratacion);
     }
 
-    //public function user(){
-    //    return $this->belongsTo(User::class);
-    //}
 }
