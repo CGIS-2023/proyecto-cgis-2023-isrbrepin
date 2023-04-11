@@ -16,4 +16,16 @@
             </div>
         </div>
     </div>
+    
+    <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('salas.index')" :active="request()->routeIs('salas.index') or request()->routeIs('salas.create') or request()->routeIs('salas.edit') or request()->routeIs('salas.show')">
+                                {{ __('Salas') }}
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('celadors.index')" :active="request()->routeIs('celadors.index') or request()->routeIs('celadors.create') or request()->routeIs('celadors.edit') or request()->routeIs('celadors.show')">
+                                {{ __('Celadores') }}
+                            </x-nav-link>
+                </div>
+    -->
+    
 </x-app-layout>
