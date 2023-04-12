@@ -133,4 +133,24 @@ class SalaController extends Controller
         }
         return redirect()->route('salas.index');
     }
+
+    public function attach_camilla(Request $request, Sala $sala)
+    {
+        $this->validateWithBag('attach',$request, [
+            'camilla_id' => 'required|exists:celador,id',
+            'inicio' => 'required|date',
+            'fin' => 'required|date|after:inicio',
+        ]);
+        $sala->camillas()->attach($request->camilla_id, [
+            'inicio' => $request->inicio,
+            'fin' => $request->fin
+        ]);
+        return redirect()->route('salas.edit', $sala->id);
+    }
+
+    public function detach_camilla(Sala $sala, camilla $camilla)
+    {
+        $sala->camillas()->detach($camilla->id);
+        return redirect()->route('salas.edit', $sala->id);
+    }
 }

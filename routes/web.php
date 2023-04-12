@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\CeladorController;
+use App\Http\Controllers\CamillaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,13 @@ Route::middleware(['auth'])->group(function () {
         'salas' => SalaController::class,
         //'especialidads' => EspecialidadController::class,
         'celadors' => CeladorController::class,
+        'camillas' => CamillaController::class,
     ]);
+    Route::post('/salas/{sala}/attach-camilla', [SalaController::class, 'attach_camilla'])
+        ->name('salas.attachCamilla')
+        ->middleware('can:attach_camilla,sala');
+    Route::delete('/salas/{sala}/detach-camilla/{camilla}', [SalaController::class, 'detach_camilla'])
+        ->name('salas.detachCamilla')
+        ->middleware('can:detach_camilla,sala');
 });
+

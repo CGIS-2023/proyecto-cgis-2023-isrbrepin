@@ -23,6 +23,11 @@
                             <x-nav-link :href="route('celadors.index')" :active="request()->routeIs('celadors.index') or request()->routeIs('celadors.create') or request()->routeIs('celadors.edit') or request()->routeIs('celadors.show')">
                                 {{ __('Celadores') }}
                             </x-nav-link>
+
+                            <x-nav-link :href="route('camillas.index')" :active="request()->routeIs('camillas.index') or request()->routeIs('camillas.create') or request()->routeIs('camillas.edit') or request()->routeIs('camillas.show')">
+                                {{ __('Camillas') }}
+                            </x-nav-link>
+                            
                 </div>
             </div>
 

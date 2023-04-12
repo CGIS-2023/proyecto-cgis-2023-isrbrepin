@@ -28,8 +28,6 @@ class Sala extends Model
         return $this->belongsTo(Celador::class);
     }
 
-    
-
     public function getTiempoHospitalizadoAttribute(){
         return Carbon::now()->diffInDays($this->fecha_hora_inicio);
     }

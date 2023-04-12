@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCamillaRequest;
-use App\Http\Requests\UpdateCamillaRequest;
+use Illuminate\Http\Request;
 use App\Models\Camilla;
 
 class CamillaController extends Controller
@@ -15,7 +14,8 @@ class CamillaController extends Controller
      */
     public function index()
     {
-        //
+        $camillas = Camilla::paginate(25);
+        return view('/camillas/index', ['camillas' => $camillas]);
     }
 
     /**
@@ -25,7 +25,7 @@ class CamillaController extends Controller
      */
     public function create()
     {
-        //
+        return view('camillas/create');
     }
 
     /**
@@ -34,9 +34,16 @@ class CamillaController extends Controller
      * @param  \App\Http\Requests\StoreCamillaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCamillaRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'precio' => 'required|numeric',
+            'fecha_adquisicion' => 'required|date'
+        ]);
+        $camilla = new Camilla($request->all());
+        $camilla->save();
+        session()->flash('success', 'Camilla creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('camillas.index');
     }
 
     /**
@@ -47,7 +54,7 @@ class CamillaController extends Controller
      */
     public function show(Camilla $camilla)
     {
-        //
+        return view('camillas/show', ['camilla' => $camilla]);
     }
 
     /**
@@ -58,7 +65,7 @@ class CamillaController extends Controller
      */
     public function edit(Camilla $camilla)
     {
-        //
+        return view('camillas/edit', ['camilla' => $camilla]);
     }
 
     /**
@@ -68,9 +75,16 @@ class CamillaController extends Controller
      * @param  \App\Models\Camilla  $camilla
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCamillaRequest $request, Camilla $camilla)
+    public function update(Request $request, Camilla $camilla)
     {
-        //
+        $this->validate($request, [
+            'precio' => 'required|numeric',
+            'fecha_adquisicion' => 'required|date'
+        ]);
+        $camilla->fill($request->all());
+        $camilla->save();
+        session()->flash('success', 'Camilla modificada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('camillas.index');
     }
 
     /**
@@ -81,6 +95,12 @@ class CamillaController extends Controller
      */
     public function destroy(Camilla $camilla)
     {
-        //
+        if($camilla->delete()) {
+            session()->flash('success', 'Camilla borrada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        }
+        else{
+            session()->flash('warning', 'No pudo borrarse la camilla.');
+        }
+        return redirect()->route('camillas.index');
     }
 }
