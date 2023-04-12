@@ -17,7 +17,7 @@ class Camilla extends Model
     ];
 
     public function salas(){
-        return $this->belongsToMany(Sala::class)->withPivot('inicio', 'fin');
+        return $this->belongsToMany(Sala::class, 'sala_camilla')->withPivot('inicio', 'fin');
     }
 
     public function getFechaFinVidaUtilAttribute(){

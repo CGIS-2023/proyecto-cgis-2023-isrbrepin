@@ -68,6 +68,16 @@ class SalaPolicy
         return true;
     }
 
+    public function attach_camilla(User $user, Sala $sala)
+    {
+        return true;
+    }
+
+    public function detach_camilla(User $user, Sala $sala)
+    {
+        return true;
+    }
+
     /**
      * Determine whether the user can restore the model.
      *

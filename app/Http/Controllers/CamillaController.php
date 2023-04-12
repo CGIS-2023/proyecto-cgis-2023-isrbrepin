@@ -14,7 +14,7 @@ class CamillaController extends Controller
      */
     public function index()
     {
-        $camillas = Camilla::paginate(25);
+        $camillas = Camilla::orderBy('fecha_adquisicion', 'desc')->paginate(25);
         return view('/camillas/index', ['camillas' => $camillas]);
     }
 

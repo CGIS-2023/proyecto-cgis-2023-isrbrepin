@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sala;
 use App\Models\Celador;
+use App\Models\Camilla;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
@@ -92,7 +93,11 @@ class SalaController extends Controller
     public function edit(Sala $sala)
     {
         $celadors = Celador::all();
-        return view('salas/edit', ['sala' => $sala, 'celadors' => $celadors]);
+        $camillas = Camilla::all();
+        if(Auth::user()->tipo_usuario_id == 2) {
+            return view('salas/edit', ['sala' => $cita, 'celador' => Auth::user()->celador, 'camillas' => $camillas]);
+        }
+        return view('salas/edit', ['sala' => $sala, 'celadors' => $celadors, 'camillas' => $camillas]);
     }
 
     /**
@@ -137,7 +142,7 @@ class SalaController extends Controller
     public function attach_camilla(Request $request, Sala $sala)
     {
         $this->validateWithBag('attach',$request, [
-            'camilla_id' => 'required|exists:celador,id',
+            'camilla_id' => 'required|exists:celadors,id',
             'inicio' => 'required|date',
             'fin' => 'required|date|after:inicio',
         ]);
@@ -148,7 +153,7 @@ class SalaController extends Controller
         return redirect()->route('salas.edit', $sala->id);
     }
 
-    public function detach_camilla(Sala $sala, camilla $camilla)
+    public function detach_camilla(Sala $sala, Camilla $camilla)
     {
         $sala->camillas()->detach($camilla->id);
         return redirect()->route('salas.edit', $sala->id);

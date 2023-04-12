@@ -97,4 +97,64 @@
             </div>
         </div>
     </div>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="font-semibold text-lg px-6 py-4 bg-white border-b border-gray-200">
+                    Añadir camilla
+                </div>
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <!-- Validation Errors -->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors->attach" />
+                    <form method="POST" action="{{ route('salas.attachCamilla', [$sala->id]) }}">
+                        @csrf
+
+                        <div class="mt-4">
+                            <x-label for="camilla_id" :value="__('Camilla')" />
+
+
+                            <x-select id="camilla_id" name="camilla_id" required>
+                                <option value="">{{__('Elige una camilla')}}</option>
+                                @foreach ($camillas as $camilla)
+                                    <option value="{{$camilla->id}}" @if (old('camilla_id') == $camilla->id) selected @endif>{{__('ID:')}} {{$camilla->id}}{{__(',')}} ({{$camilla->precio}} {{__('€.')}})</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-label for="inicio" :value="__('Inicio paciente en sala')" />
+
+                            <x-input id="inicio" class="block mt-1 w-full"
+                                     type="date"
+                                     name="inicio"
+                                     :value="old('inicio')"
+                                     required />
+                        </div>
+
+                        <div class="mt-4">
+                            <x-label for="fin" :value="__('Final paciente en sala')" />
+
+                            <x-input id="fin" class="block mt-1 w-full"
+                                     type="date"
+                                     name="fin"
+                                     :value="old('fin')"
+                                     required />
+                        </div>
+
+                        <div class="flex items-center justify-end mt-4">
+                            <x-button type="button" class="bg-red-800 hover:bg-red-700">
+                                <a href={{route('celadors.index')}}>
+                                    {{ __('Cancelar') }}
+                                </a>
+                            </x-button>
+                            <x-button class="ml-4">
+                                {{ __('Guardar') }}
+                            </x-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

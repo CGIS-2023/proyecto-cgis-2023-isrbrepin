@@ -91,4 +91,14 @@ class CamillaPolicy
     {
         //
     }
+
+    public function attach_camilla(User $user, Sala $sala)
+    {
+        return true;
+    }
+
+    public function detach_camilla(User $user, Sala $sala)
+    {
+        return true;
+    }
 }
