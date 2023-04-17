@@ -10,7 +10,7 @@ class Camilla extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['precio', 'fecha_adquisicion'];
+    protected $fillable = ['precio', 'fecha_adquisicion', 'tipo_camilla_id'];
 
     protected $casts = [
         'fecha_adquisicion' => 'datetime:Y-m-d',
@@ -19,6 +19,10 @@ class Camilla extends Model
 
     public function salas(){
         return $this->belongsToMany(Sala::class, 'sala_camilla')->withPivot('comentario');
+    }
+
+    public function tipo_camilla(){
+        return $this->belongsTo(TipoCamilla::class);
     }
 
     public function getFechaFinVidaUtilAttribute(){

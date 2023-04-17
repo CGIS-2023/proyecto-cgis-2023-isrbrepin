@@ -117,7 +117,7 @@
                             <x-select id="camilla_id" name="camilla_id" required>
                                 <option value="">{{__('Elige una camilla')}}</option>
                                 @foreach ($camillas as $camilla)
-                                    <option value="{{$camilla->id}}" @if (old('camilla_id') == $camilla->id) selected @endif>{{__('ID:')}} {{$camilla->id}}{{__(',')}} ({{$camilla->precio}} {{__('€.')}})</option>
+                                    <option value="{{$camilla->id}}" @if (old('camilla_id') == $camilla->id) selected @endif>{{__('Camilla ')}} {{$camilla->tipo_camilla->tipo}}{{__(' con Id: ')}} ({{$camilla->id}})</option>
                                 @endforeach
                             </x-select>
                         </div>

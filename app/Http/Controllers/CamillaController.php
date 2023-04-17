@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Camilla;
+use App\Models\TipoCamilla;
 
 class CamillaController extends Controller
 {
@@ -23,9 +24,10 @@ class CamillaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Camilla $camilla)
     {
-        return view('camillas/create');
+        $tipo_camillas = TipoCamilla::all();
+        return view('camillas/create', [ 'camilla' => $camilla, 'tipo_camillas' => $tipo_camillas]);
     }
 
     /**
@@ -39,6 +41,7 @@ class CamillaController extends Controller
         $this->validate($request, [
             'precio' => 'required|numeric',
             'fecha_adquisicion' => 'required|date',
+            'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
         ]);
         $camilla = new Camilla($request->all());
         $camilla->save();
@@ -54,7 +57,8 @@ class CamillaController extends Controller
      */
     public function show(Camilla $camilla)
     {
-        return view('camillas/show', ['camilla' => $camilla]);
+        $tipo_camillas = TipoCamilla::all();
+        return view('camillas/show', ['camilla' => $camilla, 'tipo_camillas' => $tipo_camillas]);
     }
 
     /**
@@ -65,7 +69,8 @@ class CamillaController extends Controller
      */
     public function edit(Camilla $camilla)
     {
-        return view('camillas/edit', ['camilla' => $camilla]);
+        $tipo_camillas = TipoCamilla::all();
+        return view('camillas/edit', ['camilla' => $camilla, 'tipo_camillas' => $tipo_camillas]);
     }
 
     /**
@@ -80,6 +85,7 @@ class CamillaController extends Controller
         $this->validate($request, [
             'precio' => 'required|numeric',
             'fecha_adquisicion' => 'required|date',
+            'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
         ]);
         $camilla->fill($request->all());
         $camilla->save();

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoCamilla extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['tipo'];
+
+    public function camilla(){
+        return $this->hasOne(Camilla::class);
+    }
 }

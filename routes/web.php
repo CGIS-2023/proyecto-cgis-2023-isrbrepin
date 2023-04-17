@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\CeladorController;
 use App\Http\Controllers\CamillaController;
+use App\Http\Controllers\TipoCamillaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
         //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
         //'medicos' => MedicoController::class,
         'salas' => SalaController::class,
+        'tipo_camillas' => TipoCamillaController::class,
         //'especialidads' => EspecialidadController::class,
         'celadors' => CeladorController::class,
         'camillas' => CamillaController::class,

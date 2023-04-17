@@ -41,6 +41,17 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-label for="id" :value="__('Tipo de camilla')" />
+
+                            <x-input id="id" class="block mt-1 w-full"
+                                     type="text"
+                                     name="id"
+                                     disabled
+                                     :value="$camilla->tipo_camilla->tipo"
+                                     required />
+                        </div>
+
+                        <div class="mt-4">
                             <x-label for="precio" :value="__('Precio')" />
 
                             <x-input id="precio" class="block mt-1 w-full"

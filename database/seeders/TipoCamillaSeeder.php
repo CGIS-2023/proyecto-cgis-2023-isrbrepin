@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TipoCamillaSeeder extends Seeder
 {
@@ -14,6 +15,22 @@ class TipoCamillaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('tipo_camillas')->insert([
+            [
+                'tipo' => "Articulada",
+            ],
+            [
+                'tipo' => "Rígida",
+            ],
+            [
+                'tipo' => "Tijera",
+            ],
+            [
+                'tipo' => "Espinal",
+            ],
+            [
+                'tipo' => "Libro",
+            ],
+        ]);
     }
 }

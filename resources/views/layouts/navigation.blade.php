@@ -27,6 +27,9 @@
                             <x-nav-link :href="route('camillas.index')" :active="request()->routeIs('camillas.index') or request()->routeIs('camillas.create') or request()->routeIs('camillas.edit') or request()->routeIs('camillas.show')">
                                 {{ __('Camillas') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('tipo_camillas.index')" :active="request()->routeIs('tipo_camillas.index') or request()->routeIs('tipo_camillas.create') or request()->routeIs('tipo_camillas.edit') or request()->routeIs('tipo_camillas.show')">
+                                {{ __('Tipos de Camillas') }}
+                            </x-nav-link>
                             
                 </div>
             </div>

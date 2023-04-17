@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTipoCamillaRequest;
-use App\Http\Requests\UpdateTipoCamillaRequest;
 use App\Models\TipoCamilla;
+use Illuminate\Http\Request;
 
 class TipoCamillaController extends Controller
 {
@@ -15,7 +14,8 @@ class TipoCamillaController extends Controller
      */
     public function index()
     {
-        //
+        $tipo_camillas = TipoCamilla::paginate(25);
+        return view('/tipo_camillas/index', ['tipo_camillas' => $tipo_camillas]);
     }
 
     /**
@@ -25,7 +25,7 @@ class TipoCamillaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipo_camillas/create');
     }
 
     /**
@@ -34,9 +34,17 @@ class TipoCamillaController extends Controller
      * @param  \App\Http\Requests\StoreTipoCamillaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTipoCamillaRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'tipo' => 'required|string|max:255',
+        ], [
+            'tipo.required' => 'El tipo de camilla es obligatorio',
+        ]);
+        $tipo_camilla = new TipoCamilla($request->all());
+        $tipo_camilla->save();
+        session()->flash('success', 'Tipo de camilla creado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('tipo_camillas.index');
     }
 
     /**
@@ -45,7 +53,7 @@ class TipoCamillaController extends Controller
      * @param  \App\Models\TipoCamilla  $tipoCamilla
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoCamilla $tipoCamilla)
+    public function show(Request $tipo_camilla)
     {
         //
     }
@@ -58,7 +66,7 @@ class TipoCamillaController extends Controller
      */
     public function edit(TipoCamilla $tipoCamilla)
     {
-        //
+        return view('tipo_camillas/edit', ['tipo_camilla' => $tipoCamilla]);
     }
 
     /**
@@ -68,9 +76,17 @@ class TipoCamillaController extends Controller
      * @param  \App\Models\TipoCamilla  $tipoCamilla
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTipoCamillaRequest $request, TipoCamilla $tipoCamilla)
+    public function update(Request $request, TipoCamilla $tipo_camilla)
     {
-        //
+        $this->validate($request, [
+            'tipo' => 'required|string|max:255',
+        ], [
+            'tipo.required' => 'El tipo de camilla es obligatorio',
+        ]);
+        $tipo_camilla->fill($request->all());
+        $tipo_camilla->save();
+        session()->flash('success', 'Tipo camilla modificado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('tipo_camillas.index');
     }
 
     /**
@@ -79,8 +95,14 @@ class TipoCamillaController extends Controller
      * @param  \App\Models\TipoCamilla  $tipoCamilla
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoCamilla $tipoCamilla)
+    public function destroy(TipoCamilla $tipo_camilla)
     {
-        //
+        if($tipo_camilla->delete()) {
+            session()->flash('success', 'Tipo de camilla borrada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        }
+        else{
+            session()->flash('warning', 'No pudo borrarse el tipo de camilla.');
+        }
+        return redirect()->route('tipo_camillas.index');
     }
 }
