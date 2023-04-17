@@ -122,29 +122,15 @@
                             </x-select>
                         </div>
 
-                        <div class="mt-4">
-                            <x-label for="inicio" :value="__('Inicio paciente en sala')" />
+                        <div>
+                            <x-label for="comentario" :value="__('Comentario')" />
 
-                            <x-input id="inicio" class="block mt-1 w-full"
-                                     type="date"
-                                     name="inicio"
-                                     :value="old('inicio')"
-                                     required />
-                        </div>
-
-                        <div class="mt-4">
-                            <x-label for="fin" :value="__('Final paciente en sala')" />
-
-                            <x-input id="fin" class="block mt-1 w-full"
-                                     type="date"
-                                     name="fin"
-                                     :value="old('fin')"
-                                     required />
+                            <x-input id="comentario" class="block mt-1 w-full" type="text" name="comentario" :value="old('comentario')" />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">
-                                <a href={{route('celadors.index')}}>
+                                <a href={{route('salas.index')}}>
                                     {{ __('Cancelar') }}
                                 </a>
                             </x-button>

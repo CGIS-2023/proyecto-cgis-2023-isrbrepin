@@ -13,14 +13,19 @@ class Camilla extends Model
     protected $fillable = ['precio', 'fecha_adquisicion'];
 
     protected $casts = [
-        'fecha_adquisicion' => 'date:Y-m-d',
+        'fecha_adquisicion' => 'datetime:Y-m-d',
+        
     ];
 
     public function salas(){
-        return $this->belongsToMany(Sala::class, 'sala_camilla')->withPivot('inicio', 'fin');
+        return $this->belongsToMany(Sala::class, 'sala_camilla')->withPivot('comentario');
     }
 
     public function getFechaFinVidaUtilAttribute(){
         return Carbon::parse($this->fecha_adquisicion)->addYears(7);
+    }
+
+    public function getTiempoHospitalizadoAttribute(){
+        return Carbon::now()->diffInDays($this->inicio);
     }
 }

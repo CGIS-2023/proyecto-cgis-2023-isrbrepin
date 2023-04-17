@@ -36,11 +36,11 @@
                                 <x-input id="precio" class="block mt-1 w-full" type="text" name="precio" :value="$camilla->precio" required autofocus />
                             </div>
 
-                                <div>
-                                    <x-label for="fecha_adquisicion" :value="__('Fecha de Adquisicion')" />
+                            <div>
+                                <x-label for="fecha_adquisicion" :value="__('Fecha de Adquisicion')" />
 
-                                    <x-input id="fecha_adquisicion" class="block mt-1 w-full" type="date" name="fecha_adquisicion" :value="$camilla->fecha_adquisicion" required />
-                                </div>
+                                <x-input id="fecha_adquisicion" class="block mt-1 w-full" type="date" name="fecha_adquisicion" :value="$camilla->fecha_adquisicion->format('Y-m-d')" required />
+                            </div>
 
                             <div class="flex items-center justify-end mt-4">
                                 <x-button type="button" class="bg-red-800 hover:bg-red-700">

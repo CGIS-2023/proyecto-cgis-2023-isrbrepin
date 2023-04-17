@@ -18,19 +18,19 @@ class CamillaSeeder extends Seeder
         DB::table('camillas')->insert([
             [
                 'precio' => 200,
-                'fecha_adquisicion' => '2022-10-30',
+                'fecha_adquisicion' => '2021-01-01',
             ],
             [
                 'precio' => 1000,
-                'fecha_adquisicion' => '2019-10-30',
+                'fecha_adquisicion' => '2019-01-01',
             ],
             [
                 'precio' => 600,
-                'fecha_adquisicion' => '2020-10-30',
+                'fecha_adquisicion' => '2020-01-01',
             ],
             [
                 'precio' => 400,
-                'fecha_adquisicion' => '2018-10-30',
+                'fecha_adquisicion' => '2022-01-01',
             ],
         ]);
     }

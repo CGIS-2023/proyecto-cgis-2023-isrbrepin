@@ -143,13 +143,10 @@ class SalaController extends Controller
     {
         $this->validateWithBag('attach',$request, [
             'camilla_id' => 'required|exists:celadors,id',
-            'inicio' => 'required|date',
-            'fin' => 'required|date|after:inicio',
         ]);
-        $sala->camillas()->attach($request->camilla_id, [
-            'inicio' => $request->inicio,
-            'fin' => $request->fin
-        ]);
+        $sala->camillas()->attach($request->camilla_id, ['comentario' => $request->comentario,
+        ]
+    );
         return redirect()->route('salas.edit', $sala->id);
     }
 

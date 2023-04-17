@@ -38,7 +38,7 @@ class CamillaController extends Controller
     {
         $this->validate($request, [
             'precio' => 'required|numeric',
-            'fecha_adquisicion' => 'required|date'
+            'fecha_adquisicion' => 'required|date',
         ]);
         $camilla = new Camilla($request->all());
         $camilla->save();
@@ -79,7 +79,7 @@ class CamillaController extends Controller
     {
         $this->validate($request, [
             'precio' => 'required|numeric',
-            'fecha_adquisicion' => 'required|date'
+            'fecha_adquisicion' => 'required|date',
         ]);
         $camilla->fill($request->all());
         $camilla->save();

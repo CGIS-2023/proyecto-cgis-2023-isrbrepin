@@ -47,20 +47,17 @@ class SalaSeeder extends Seeder
             [
                 'sala_id' => 1,
                 'camilla_id' => 1,
-                'inicio' => '2021-05-31',
-                'fin' => '2021-06-07',
+                'comentario' => '',
             ],
             [
                 'sala_id' => 2,
                 'camilla_id' => 2,
-                'inicio' => '2021-06-30',
-                'fin' => '2021-07-15',
+                'comentario' => '',
             ],
             [
                 'sala_id' => 2,
                 'camilla_id' => 1,
-                'inicio' => '2021-06-30',
-                'fin' => '2021-07-10',
+                'comentario' => '',
             ],
         ]);
     }

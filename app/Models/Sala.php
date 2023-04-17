@@ -20,7 +20,7 @@ class Sala extends Model
     }
     */
     public function camillas(){
-        return $this->belongsToMany(Camilla::class, 'sala_camilla')->using(SalaCamillaPivot::class)->withPivot('inicio', 'fin');
+        return $this->belongsToMany(Camilla::class, 'sala_camilla')->using(SalaCamillaPivot::class)->withPivot('comentario');
     }
     
 

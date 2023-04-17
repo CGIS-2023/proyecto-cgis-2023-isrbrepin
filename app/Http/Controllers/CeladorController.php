@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Celador;
+use App\Models\Camilla;
+use App\Models\Sala;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -79,6 +81,8 @@ class CeladorController extends Controller
      */
     public function edit(Celador $celador)
     {
+        $camillas = Camilla::all();
+        $salas = Sala::all();
         return view('celadors/edit', ['celador' => $celador]);
     }
 
