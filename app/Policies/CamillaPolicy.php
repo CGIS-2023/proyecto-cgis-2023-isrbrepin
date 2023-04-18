@@ -18,7 +18,7 @@ class CamillaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -30,7 +30,7 @@ class CamillaPolicy
      */
     public function view(User $user, Camilla $camilla)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -41,7 +41,7 @@ class CamillaPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class CamillaPolicy
      */
     public function update(User $user, Camilla $camilla)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -65,7 +65,7 @@ class CamillaPolicy
      */
     public function delete(User $user, Camilla $camilla)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -92,13 +92,4 @@ class CamillaPolicy
         //
     }
 
-    public function attach_camilla(User $user, Sala $sala)
-    {
-        return true;
-    }
-
-    public function detach_camilla(User $user, Sala $sala)
-    {
-        return true;
-    }
 }

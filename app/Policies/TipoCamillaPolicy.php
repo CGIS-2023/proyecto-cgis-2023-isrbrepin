@@ -18,7 +18,7 @@ class TipoCamillaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class TipoCamillaPolicy
      */
     public function view(User $user, TipoCamilla $tipoCamilla)
     {
-        //
+        return $user->tipo_usuario_id == 3 || return $user->tipo_usuario_id == 2;
     }
 
     /**
@@ -41,7 +41,7 @@ class TipoCamillaPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class TipoCamillaPolicy
      */
     public function update(User $user, TipoCamilla $tipoCamilla)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -65,7 +65,7 @@ class TipoCamillaPolicy
      */
     public function delete(User $user, TipoCamilla $tipoCamilla)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**

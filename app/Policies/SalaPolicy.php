@@ -30,7 +30,7 @@ class SalaPolicy
      */
     public function view(User $user, Sala $sala)
     {
-        return true;
+        return $user->tipo_usuario_id == 3 || return $user->tipo_usuario_id == 2;
     }
 
     /**
@@ -41,7 +41,7 @@ class SalaPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class SalaPolicy
      */
     public function update(User $user, Sala $sala)
     {
-        return true;
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -65,17 +65,17 @@ class SalaPolicy
      */
     public function delete(User $user, Sala $sala)
     {
-        return true;
+        return $user->tipo_usuario_id == 3;
     }
 
     public function attach_camilla(User $user, Sala $sala)
     {
-        return true;
+        return $user->tipo_usuario_id == 3;
     }
 
     public function detach_camilla(User $user, Sala $sala)
     {
-        return true;
+        return $user->tipo_usuario_id == 3;
     }
 
     /**

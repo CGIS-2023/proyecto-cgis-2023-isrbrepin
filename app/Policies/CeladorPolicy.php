@@ -18,7 +18,7 @@ class CeladorPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -30,7 +30,7 @@ class CeladorPolicy
      */
     public function view(User $user, Celador $celador)
     {
-        return true;
+        return $user->tipo_usuario_id == 3; || return $user->tipo_usuario_id == 2;
     }
 
     /**
@@ -41,7 +41,7 @@ class CeladorPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class CeladorPolicy
      */
     public function update(User $user, Celador $celador)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -65,7 +65,7 @@ class CeladorPolicy
      */
     public function delete(User $user, Celador $celador)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
