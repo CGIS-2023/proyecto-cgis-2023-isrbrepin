@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TipoCamillaController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(TipoCamilla::class, 'tipo_camilla');
+    }
     /**
      * Display a listing of the resource.
      *

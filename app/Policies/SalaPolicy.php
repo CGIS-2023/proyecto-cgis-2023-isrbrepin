@@ -30,7 +30,7 @@ class SalaPolicy
      */
     public function view(User $user, Sala $sala)
     {
-        return $user->tipo_usuario_id == 3 || return $user->tipo_usuario_id == 2;
+        return true;
     }
 
     /**

@@ -30,7 +30,7 @@ class TipoCamillaPolicy
      */
     public function view(User $user, TipoCamilla $tipoCamilla)
     {
-        return $user->tipo_usuario_id == 3 || return $user->tipo_usuario_id == 2;
+        return true;
     }
 
     /**

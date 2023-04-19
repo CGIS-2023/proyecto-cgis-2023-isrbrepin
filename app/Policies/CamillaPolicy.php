@@ -18,7 +18,7 @@ class CamillaPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->tipo_usuario_id == 3;
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class CamillaPolicy
      */
     public function view(User $user, Camilla $camilla)
     {
-        return $user->tipo_usuario_id == 3;
+        return true;
     }
 
     /**

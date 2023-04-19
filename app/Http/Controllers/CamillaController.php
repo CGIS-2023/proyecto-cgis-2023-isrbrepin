@@ -8,6 +8,10 @@ use App\Models\TipoCamilla;
 
 class CamillaController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Camilla::class, 'camilla');
+    }
     /**
      * Display a listing of the resource.
      *

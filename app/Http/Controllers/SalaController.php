@@ -11,6 +11,10 @@ use Illuminate\Validation\Rule;
 
 class SalaController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Sala::class, 'sala');
+    }
     /**
      * Display a listing of the resource.
      *
