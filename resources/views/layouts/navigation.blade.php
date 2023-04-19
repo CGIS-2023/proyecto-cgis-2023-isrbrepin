@@ -24,6 +24,10 @@
                                 {{ __('Celadores') }}
                             </x-nav-link>
 
+                            <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('medicos.index') or request()->routeIs('medicos.create') or request()->routeIs('medicos.edit') or request()->routeIs('medicos.show')">
+                                {{ __('Médicos') }}
+                            </x-nav-link>
+
                             <x-nav-link :href="route('camillas.index')" :active="request()->routeIs('camillas.index') or request()->routeIs('camillas.create') or request()->routeIs('camillas.edit') or request()->routeIs('camillas.show')">
                                 {{ __('Camillas') }}
                             </x-nav-link>

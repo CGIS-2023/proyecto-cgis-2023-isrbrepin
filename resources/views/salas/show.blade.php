@@ -40,6 +40,17 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-label for="name" :value="__('Medico Encargado')" />
+
+                            <x-input id="name" class="block mt-1 w-full"
+                                     type="text"
+                                     name="name"
+                                     disabled
+                                     :value="$sala->medico->user->name"
+                                     required />
+                        </div>
+
+                        <div class="mt-4">
                             <x-label for="fecha_hora_inicio" :value="__('Fecha y hora')" />
 
                             <x-input id="fecha_hora_inicio" class="block mt-1 w-full"

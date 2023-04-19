@@ -53,7 +53,7 @@ class User extends Authenticatable
     }
 
     public function getTipoUsuarioIdAttribute(){
-        if($this->celador()->exists()){
+        if($this->medico()->exists()){
             return 1;
         }
         elseif($this->celador()->exists()){
