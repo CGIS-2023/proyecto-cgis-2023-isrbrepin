@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Celador extends Model
+class Medico extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fecha_nacimiento', 'telefono', 'fecha_contratacion', 'sueldo'];
+    protected $fillable = ['fecha_nacimiento', 'telefono', 'fecha_contratacion', 'vacunado', 'sueldo'];
 
 
     protected $casts = [
+        'vacunado' => 'boolean',
         'fecha_nacimiento' => 'datetime:Y-m-d',
         'fecha_contratacion' => 'datetime:Y-m-d',
     ];
@@ -25,8 +26,8 @@ class Celador extends Model
         return $this->hasMany(Sala::class); // one to many
     }
 
-    public function medicos(){
-        return $this->hasManyThrough(Medico::class, Sala::class);
+    public function celadors(){
+        return $this->hasManyThrough(Celador::class, Sala::class);
     }
     
     /*
@@ -47,5 +48,4 @@ class Celador extends Model
     public function getDiasContratadoAttribute(){
         return Carbon::now()->diffInDays($this->fecha_contratacion);
     }
-
 }

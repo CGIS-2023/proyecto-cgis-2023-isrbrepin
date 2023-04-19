@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('salas', function (Blueprint $table) {
+        Schema::create('medicos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->dateTime('fecha_hora_inicio');
-            $table->string('planta');
-            $table->string('numero_sala');
-            $table->integer('numero_camillas');
-            $table->foreignId('medico_id')->constrained()->onDelete('cascade');
-            $table->foreignId('celador_id')->constrained()->onDelete('cascade');
+            $table->date('fecha_nacimiento');
+            $table->string('telefono');
+            $table->date('fecha_contratacion');
+            $table->boolean('vacunado');
+            $table->double('sueldo');
+            $table->foreignId('user_id')->unique()->constrained()->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salas');
+        Schema::dropIfExists('medicos');
     }
 };

@@ -17,7 +17,7 @@ class SalaSeeder extends Seeder
     {
         DB::table('salas')->insert([
             [
-                //'medico_id' => 1,
+                'medico_id' => 1,
                 'celador_id' => 1,
                 'fecha_hora_inicio' => '2022-10-30 10:15:00',
                 'planta' => "3",
@@ -26,7 +26,7 @@ class SalaSeeder extends Seeder
 
             ],
             [
-                //'medico_id' => 1,
+                'medico_id' => 1,
                 'celador_id' => 2,
                 'fecha_hora_inicio' => '2023-01-30 09:30:00',
                 'planta' => "1",
@@ -34,7 +34,7 @@ class SalaSeeder extends Seeder
                 'numero_camillas' => 4,
             ],
             [
-                //'medico_id' => 2,
+                'medico_id' => 2,
                 'celador_id' => 2,
                 'fecha_hora_inicio' => '2023-02-15 11:30:00',
                 'planta' => "2",

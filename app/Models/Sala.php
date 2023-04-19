@@ -9,16 +9,16 @@ class Sala extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fecha_hora_inicio', 'planta', 'numero_sala', 'numero_camillas', 'celador_id'];
+    protected $fillable = ['fecha_hora_inicio', 'planta', 'numero_sala', 'numero_camillas', 'celador_id', 'medico_id'];
 
     protected $casts = [
         'fecha_hora_inicio' => 'datetime:Y-m-d H:i',
     ];
-    /*
+    
     public function medico(){
         return $this->belongsTo(Medico::class);
     }
-    */
+    
     public function camillas(){
         return $this->belongsToMany(Camilla::class, 'sala_camilla')->using(SalaCamillaPivot::class)->withPivot('comentario');
     }

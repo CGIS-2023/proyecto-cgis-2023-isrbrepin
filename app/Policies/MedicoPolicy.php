@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Celador;
+use App\Models\Medico;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CeladorPolicy
+class MedicoPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class CeladorPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        //
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Celador  $celador
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Celador $celador)
+    public function view(User $user, Medico $medico)
     {
-        return $user->tipo_usuario_id == 3 || $user->tipo_usuario_id == 2;
+        //
     }
 
     /**
@@ -41,41 +41,41 @@ class CeladorPolicy
      */
     public function create(User $user)
     {
-        return $user->tipo_usuario_id == 3;
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Celador  $celador
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Celador $celador)
+    public function update(User $user, Medico $medico)
     {
-        return $user->tipo_usuario_id == 3 || $celador->id == $user->celador_id;
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Celador  $celador
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Celador $celador)
+    public function delete(User $user, Medico $medico)
     {
-        return $user->tipo_usuario_id == 3;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Celador  $celador
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Celador $celador)
+    public function restore(User $user, Medico $medico)
     {
         //
     }
@@ -84,10 +84,10 @@ class CeladorPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Celador  $celador
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Celador $celador)
+    public function forceDelete(User $user, Medico $medico)
     {
         //
     }

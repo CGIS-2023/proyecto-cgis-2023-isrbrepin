@@ -42,10 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //public function medico()
-    //{
-    //    return $this->hasOne(Medico::class);
-    //}
+    public function medico()
+    {
+        return $this->hasOne(Medico::class);
+    }
 
     public function celador()
     {
@@ -54,6 +54,9 @@ class User extends Authenticatable
 
     public function getTipoUsuarioIdAttribute(){
         if($this->celador()->exists()){
+            return 1;
+        }
+        elseif($this->celador()->exists()){
             return 2;
         }
         else{
@@ -62,7 +65,7 @@ class User extends Authenticatable
     }
 
     public function getTipoUsuarioAttribute(){
-        $tipos_usuario = [2 => trans('Celador'), 3 => trans('Administrador')];
+        $tipos_usuario = [1 => trans('Médico'), 2 => trans('Celador'), 3 => trans('Administrador')];
         return $tipos_usuario[$this->tipo_usuario_id];
     }
 }
