@@ -31,8 +31,8 @@
 
                         
 
-                        @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
-                        <div class="mt-4">
+                        <!-- @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
+                         <div class="mt-4">
                             <x-label for="celador_id" :value="__('Celador Encargado')" />
                     
                             @isset($celador)
@@ -55,7 +55,32 @@
                                 </x-select>
                             @endisset
                         </div>
-                                @endif
+                                @endif -->
+
+                        <div class="mt-4">
+                            <x-label for="medico_id" :value="__('Medico Encargado')" />
+                    
+                            @isset($medico)
+                                <x-input id="medico_id" class="block mt-1 w-full"
+                                         type="hidden"
+                                         name="medico_id"
+                                         :value="old(name)"
+                                         required />
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled
+                                         value="{{$medico->user->name}}"
+                                />
+                            @else
+                                <x-select id="medico_id" name="medico_id" required>
+                                    <option value="">{{__('Elige un medico')}}</option>
+                                    @foreach ($medicos as $medico)
+                                        <option value="{{$medico->id}}" @if ($sala->medico_id == $medico->id) selected @endif>{{$medico->user->name}}</option>
+                                    @endforeach
+                                </x-select>
+                            @endisset
+                        </div>
+                       
                         
                         <div class="mt-4">
                             <x-label for="fecha_hora_inicio" :value="__('Fecha y hora')" />

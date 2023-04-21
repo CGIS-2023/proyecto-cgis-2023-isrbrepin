@@ -28,16 +28,6 @@
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         @csrf
                         @method('put')
-                        <div class="mt-4">
-                            <x-label for="name" :value="__('Celador Encargado')" />
-
-                            <x-input id="name" class="block mt-1 w-full"
-                                     type="text"
-                                     name="name"
-                                     disabled
-                                     :value="$sala->celador->user->name"
-                                     required />
-                        </div>
 
                         <div class="mt-4">
                             <x-label for="name" :value="__('Medico Encargado')" />

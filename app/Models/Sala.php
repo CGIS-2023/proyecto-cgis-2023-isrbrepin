@@ -9,7 +9,7 @@ class Sala extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fecha_hora_inicio', 'planta', 'numero_sala', 'numero_camillas', 'celador_id', 'medico_id'];
+    protected $fillable = ['fecha_hora_inicio', 'planta', 'numero_sala', 'numero_camillas', 'medico_id'];
 
     protected $casts = [
         'fecha_hora_inicio' => 'datetime:Y-m-d H:i',

@@ -28,9 +28,6 @@ class SalaController extends Controller
         if(Auth::user()->tipo_usuario_id == 1){
             $salas = Auth::user()->medico->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
         }
-        if(Auth::user()->tipo_usuario_id == 2){
-            $salas = Auth::user()->celador->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
-        }
         return view('/salas/index', ['salas' => $salas]);
     }
 
@@ -48,7 +45,7 @@ class SalaController extends Controller
         }elseif(Auth::user()->tipo_usuario_id == 2) {
             return view('salas/create', ['celador' => Auth::user()->celador]);
         }
-        return view('salas/create', ['sala' => $sala, 'celadors' => $celadors]);
+        return view('salas/create', ['sala' => $sala, 'celadors' => $celadors, 'medicos' => $medicos]);
     }
 
     /**
@@ -74,7 +71,7 @@ class SalaController extends Controller
             $reglas = array_merge($reglas_celador, $reglas);
         }
         else{
-            $reglas_generales = ['celador_id' => ['required', 'exists:celadors,id']];
+            $reglas_generales = ['medico_id' => ['required', 'exists:medicos,id']];
             $reglas = array_merge($reglas_generales, $reglas);
         }
         $medicos = Medico::all();
