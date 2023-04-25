@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Camilla;
 use App\Models\TipoCamilla;
+use App\Models\Celador;
+use Illuminate\Support\Facades\Auth;
 
 class CamillaController extends Controller
 {
@@ -30,8 +32,9 @@ class CamillaController extends Controller
      */
     public function create(Camilla $camilla)
     {
+        $celadors = Celador::all();
         $tipo_camillas = TipoCamilla::all();
-        return view('camillas/create', [ 'camilla' => $camilla, 'tipo_camillas' => $tipo_camillas]);
+        return view('camillas/create', [ 'camilla' => $camilla, 'tipo_camillas' => $tipo_camillas, 'celadors' => $celadors]);
     }
 
     /**
@@ -73,8 +76,12 @@ class CamillaController extends Controller
      */
     public function edit(Camilla $camilla)
     {
+        $celadors = Celador::all();
         $tipo_camillas = TipoCamilla::all();
-        return view('camillas/edit', ['camilla' => $camilla, 'tipo_camillas' => $tipo_camillas]);
+        if(Auth::user()->tipo_usuario_id == 2) {
+            return view('camillas/edit', ['tipo_camillas' => $tipo_camillas, 'celadors' => Auth::user()->celadors, 'camilla' => $camilla]);
+        }
+        return view('camillas/edit', ['tipo_camillas' => $tipo_camillas, 'celadors' => $celadors, 'camilla' => $camilla]);
     }
 
     /**

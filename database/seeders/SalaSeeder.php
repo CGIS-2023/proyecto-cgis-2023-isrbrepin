@@ -18,7 +18,6 @@ class SalaSeeder extends Seeder
         DB::table('salas')->insert([
             [
                 'medico_id' => 1,
-                //'celador_id' => 1,
                 'fecha_hora_inicio' => '2022-10-30 10:15:00',
                 'planta' => "3",
                 'numero_sala' => "135",

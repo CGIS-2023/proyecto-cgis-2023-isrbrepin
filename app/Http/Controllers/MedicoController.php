@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medico;
+use App\Models\Sala;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class MedicoController extends Controller
 {
@@ -41,6 +44,7 @@ class MedicoController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
+            'fecha_nacimiento' => 'required|date',
             'telefono' => 'required|string|max:255',
             'fecha_contratacion' => 'required|date',
             'vacunado' => 'required|boolean',

@@ -20,6 +20,7 @@
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">ID</th>
+                            <th class="py-3 px-6 text-left">Celador Asociado</th>
                             <th class="py-3 px-6 text-left">Tipo de Camilla</th>
                             <th class="py-3 px-6 text-left">Precio</th>
                             <th class="py-3 px-6 text-left">Fecha de Adquisicion</th>
@@ -34,6 +35,11 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$camilla->id}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$camilla->celador->user->name}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">

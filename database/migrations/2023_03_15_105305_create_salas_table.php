@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('numero_sala');
             $table->integer('numero_camillas');
             $table->foreignId('medico_id')->constrained()->onDelete('cascade');
-            //$table->foreignId('celador_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -26,9 +26,6 @@ class Medico extends Model
         return $this->hasMany(Sala::class); // one to many
     }
 
-    public function celadors(){
-        return $this->hasManyThrough(Celador::class, Sala::class);
-    }
     
     /*
     public function getSalasActualesAttribute(){

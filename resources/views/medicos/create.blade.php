@@ -61,6 +61,22 @@
                             </div>
 
                             <div class="mt-4">
+                                <x-label for="fecha_nacimiento" :value="__('Fecha de nacimiento')" />
+
+                                <x-input id="fecha_nacimiento" class="block mt-1 w-full"
+                                                type="date"
+                                                name="fecha_nacimiento"
+                                                :value="old('fecha_nacimiento')"
+                                                required />
+                            </div>
+
+                            <div class="mt-4">
+                                <x-label for="telefono" :value="__('Telefono')" />
+
+                                <x-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('telefono')" required />
+                            </div>
+
+                            <div class="mt-4">
                                 <x-label for="fecha_contratacion" :value="__('Fecha contratación')" />
 
                                 <x-input id="fecha_contratacion" class="block mt-1 w-full"
@@ -85,18 +101,6 @@
                                 <x-label for="sueldo" :value="__('Sueldo')" />
 
                                 <x-input id="sueldo" class="block mt-1 w-full" min="0" step="1" type="number" name="sueldo" :value="old('sueldo')" required />
-                            </div>
-
-                            <div class="mt-4">
-                                <x-label for="especialidad_id" :value="__('Especialidad')" />
-
-
-                                <x-select id="especialidad_id" name="especialidad_id" required>
-                                    <option value="">{{__('Elige una opción')}}</option>
-                                    @foreach ($especialidads as $especialidad)
-                                    <option value="{{$especialidad->id}}" @if (old('especialidad_id') == $especialidad->id) selected @endif>{{$especialidad->nombre}}</option>
-                                    @endforeach
-                                </x-select>
                             </div>
 
                             <div class="flex items-center justify-end mt-4">

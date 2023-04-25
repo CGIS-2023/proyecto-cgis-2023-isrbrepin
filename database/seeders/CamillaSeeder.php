@@ -17,22 +17,26 @@ class CamillaSeeder extends Seeder
     {
         DB::table('camillas')->insert([
             [
+                'celador_id' => 1,
                 'precio' => 200,
                 'fecha_adquisicion' => '2021-01-01',
                 'tipo_camilla_id' => 4,
                 //paciente_id...
             ],
             [
+                'celador_id' => 2,
                 'precio' => 1000,
                 'fecha_adquisicion' => '2019-01-01',
                 'tipo_camilla_id' => 3,
             ],
             [
+                'celador_id' => 1,
                 'precio' => 600,
                 'fecha_adquisicion' => '2020-01-01',
                 'tipo_camilla_id' => 2,
             ],
             [
+                'celador_id' => 2,
                 'precio' => 400,
                 'fecha_adquisicion' => '2022-01-01',
                 'tipo_camilla_id' => 1,

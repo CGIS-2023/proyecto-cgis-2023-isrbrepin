@@ -21,12 +21,8 @@ class Celador extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function salas(){
-        return $this->hasMany(Sala::class); // one to many
-    }
-
-    public function medicos(){
-        return $this->hasManyThrough(Medico::class, Sala::class);
+    public function camillas(){
+        return $this->hasMany(Camilla::class); // one to many
     }
     
     /*

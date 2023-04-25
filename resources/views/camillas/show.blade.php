@@ -41,6 +41,17 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-label for="name" :value="__('Celador Encargado')" />
+
+                            <x-input id="name" class="block mt-1 w-full"
+                                     type="text"
+                                     name="name"
+                                     disabled
+                                     :value="$camilla->celador->user->name"
+                                     required />
+                        </div>
+
+                        <div class="mt-4">
                             <x-label for="id" :value="__('Tipo de camilla')" />
 
                             <x-input id="id" class="block mt-1 w-full"

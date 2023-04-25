@@ -22,11 +22,6 @@ class Sala extends Model
     public function camillas(){
         return $this->belongsToMany(Camilla::class, 'sala_camilla')->using(SalaCamillaPivot::class)->withPivot('comentario');
     }
-    
-
-    public function celador(){
-        return $this->belongsTo(Celador::class);
-    }
 
     public function getTiempoHospitalizadoAttribute(){
         return Carbon::now()->diffInDays($this->fecha_hora_inicio);

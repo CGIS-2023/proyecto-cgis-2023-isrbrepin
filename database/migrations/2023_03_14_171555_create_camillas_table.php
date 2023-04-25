@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('precio');
             $table->date('fecha_adquisicion');
+            $table->foreignId('celador_id')->constrained()->onDelete('cascade');
         });
     }
 
