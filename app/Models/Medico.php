@@ -26,6 +26,9 @@ class Medico extends Model
         return $this->hasMany(Sala::class); // one to many
     }
 
+    public function especialidad(){
+        return $this->belongsTo(Especialidad::class);
+    }
     
     /*
     public function getSalasActualesAttribute(){

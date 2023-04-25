@@ -23,6 +23,7 @@ class MedicoSeeder extends Seeder
                 'vacunado' => 1,
                 'sueldo' => 1250.0,
                 'user_id' => 2,
+                'especialidad_id' => 1,
             ],
             [
                 'fecha_nacimiento' => "1985-05-01",
@@ -31,6 +32,7 @@ class MedicoSeeder extends Seeder
                 'vacunado' => 0,
                 'sueldo' => 1400.0,
                 'user_id' => 3,
+                'especialidad_id' => 1,
             ],
         ]);  
     }

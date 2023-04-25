@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            TipoCamillaSeeder::class, UserSeeder::class, CeladorSeeder::class, MedicoSeeder::class, CamillaSeeder::class, SalaSeeder::class
+            EspecialidadSeeder::class, TipoCamillaSeeder::class, UserSeeder::class, CeladorSeeder::class, MedicoSeeder::class, CamillaSeeder::class, SalaSeeder::class
         ]);
     }
 }
