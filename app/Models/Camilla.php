@@ -10,7 +10,7 @@ class Camilla extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['precio', 'fecha_adquisicion', 'tipo_camilla_id', 'celador_id'];
+    protected $fillable = ['precio', 'fecha_adquisicion', 'tipo_camilla_id', 'celador_id', 'paciente_id'];
 
     protected $casts = [
         'fecha_adquisicion' => 'datetime:Y-m-d',
@@ -25,6 +25,10 @@ class Camilla extends Model
         return $this->belongsTo(Celador::class);
     }
 
+    public function paciente(){
+        return $this->belongsTo(Paciente::class);
+    }
+
     public function tipo_camilla(){
         return $this->belongsTo(TipoCamilla::class);
     }
@@ -36,4 +40,5 @@ class Camilla extends Model
     public function getTiempoHospitalizadoAttribute(){
         return Carbon::now()->diffInDays($this->inicio);
     }
+
 }

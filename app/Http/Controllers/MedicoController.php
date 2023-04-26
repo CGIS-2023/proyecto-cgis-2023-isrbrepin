@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Medico;
 use App\Models\Sala;
 use App\Models\User;
+use App\Models\Especialidad;
 use Illuminate\Support\Facades\Hash;
 
 class MedicoController extends Controller
@@ -28,8 +29,8 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        $medicos = Medico::all();
-        return view('medicos/create', ['medicos' => $medicos]);
+        $especialidads = Especialidad::all();
+        return view('medicos/create', ['especialidads' => $especialidads]);
     }
 
     /**
@@ -49,6 +50,7 @@ class MedicoController extends Controller
             'fecha_contratacion' => 'required|date',
             'vacunado' => 'required|boolean',
             'sueldo' => 'required|numeric',
+            'especialidad_id' => 'required|exists:especialidads,id',
         ]);
         $user = User::create([
             'name' => $request->name,
@@ -82,8 +84,8 @@ class MedicoController extends Controller
      */
     public function edit(Medico $medico)
     {
-        $salas = Sala::all();
-        return view('medicos/edit', ['medico' => $medico]);
+        $especialidads = Especialidad::all();
+        return view('medicos/edit', ['medico' => $medico, 'especialidads' => $especialidads]);
     }
 
     /**
@@ -101,6 +103,7 @@ class MedicoController extends Controller
             'fecha_contratacion' => 'required|date',
             'vacunado' => 'required|boolean',
             'sueldo' => 'required|numeric',
+            'especialidad_id' => 'required|exists:especialidads,id',
         ];
         $this->validate($request, $reglas);
         $medico->fill($request->all());

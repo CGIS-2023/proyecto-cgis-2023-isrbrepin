@@ -9,7 +9,7 @@ class Medico extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fecha_nacimiento', 'telefono', 'fecha_contratacion', 'vacunado', 'sueldo'];
+    protected $fillable = ['fecha_nacimiento', 'telefono', 'fecha_contratacion', 'vacunado', 'sueldo', 'especialidad_id'];
 
 
     protected $casts = [

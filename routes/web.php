@@ -6,6 +6,7 @@ use App\Http\Controllers\CeladorController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\CamillaController;
 use App\Http\Controllers\TipoCamillaController;
+use App\Http\Controllers\EspecialidadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
         'medicos' => MedicoController::class,
         'salas' => SalaController::class,
         'tipo_camillas' => TipoCamillaController::class,
-        //'especialidads' => EspecialidadController::class,
+        'especialidads' => EspecialidadController::class,
         'celadors' => CeladorController::class,
         'camillas' => CamillaController::class,
     ]);

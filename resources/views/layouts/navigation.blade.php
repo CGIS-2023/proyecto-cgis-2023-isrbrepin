@@ -34,6 +34,9 @@
                             <x-nav-link :href="route('tipo_camillas.index')" :active="request()->routeIs('tipo_camillas.index') or request()->routeIs('tipo_camillas.create') or request()->routeIs('tipo_camillas.edit') or request()->routeIs('tipo_camillas.show')">
                                 {{ __('Tipos de Camillas') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('especialidads.index')" :active="request()->routeIs('especialidads.index') or request()->routeIs('especialidads.create') or request()->routeIs('especialidads.edit') or request()->routeIs('especialidads.show')">
+                                {{ __('Especialidades') }}
+                            </x-nav-link>
                             
                 </div>
             </div>

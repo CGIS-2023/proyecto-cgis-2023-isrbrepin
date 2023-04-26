@@ -61,6 +61,18 @@
                             </div>
 
                             <div class="mt-4">
+                                <x-label for="especialidad_id" :value="__('Especialidad')" />
+
+
+                                <x-select id="especialidad_id" name="especialidad_id" required>
+                                    <option value="">{{__('Elige una opción')}}</option>
+                                    @foreach ($especialidads as $especialidad)
+                                    <option value="{{$especialidad->id}}" @if (old('especialidad_id') == $especialidad->id) selected @endif>{{$especialidad->nombre}}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+
+                            <div class="mt-4">
                                 <x-label for="fecha_nacimiento" :value="__('Fecha de nacimiento')" />
 
                                 <x-input id="fecha_nacimiento" class="block mt-1 w-full"
