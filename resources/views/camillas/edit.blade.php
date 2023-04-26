@@ -46,13 +46,25 @@
                                 />
                             @else
                                 <x-select id="celador_id" name="celador_id" required>
-                                    <option value="">{{__('Elige un médico')}}</option>
+                                    <option value="">{{__('Elige un celador')}}</option>
                                     @foreach ($celadors as $celador)
                                         <option value="{{$celador->id}}" @if ($camilla->celador_id == $celador->id) selected @endif>{{$celador->user->name}}</option>
                                     @endforeach
                                 </x-select>
                             @endisset
                         </div>
+
+                        <div class="mt-4">
+                            <x-label for="paciente_id" :value="__('Paciente en camilla')" />
+                                <x-select id="paciente_id" name="paciente_id" required>
+                                    <option value="">{{__('Elige un paciente')}}</option>
+                                    @foreach ($pacientes as $paciente)
+                                        <option value="{{$paciente->id}}" @if ($camilla->paciente_id == $paciente->id) selected @endif>{{$paciente->nombre_apellido}}</option>
+                                    @endforeach
+                                </x-select>
+                        </div>
+
+
                             
                             <!-- Nombre -->
                             <div class="mt-4">

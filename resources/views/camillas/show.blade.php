@@ -58,7 +58,7 @@
                                      type="text"
                                      name="nombre"
                                      disabled
-                                     :value="$camilla->paciente->nombre_apellido"
+                                     :value="$camilla->paciente ? $camilla->paciente->nombre_apellido : 'Camilla vacía'"
                                      required />
                         </div>
 

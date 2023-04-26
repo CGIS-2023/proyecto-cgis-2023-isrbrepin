@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Camilla;
 use App\Models\TipoCamilla;
+use App\Models\Paciente;
 use App\Models\Celador;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,9 +50,11 @@ class CamillaController extends Controller
             'precio' => 'required|numeric',
             'fecha_adquisicion' => 'required|date',
             'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
-            'paciente_id' => 'exists:paciente,id',
+            'paciente_id' => 'nullable',
         ]);
-        $camilla = new Camilla($request->all());
+        $camillaData = $request->all();
+        $camillaData['paciente_id'] = isset($camillaData['paciente_id']) ? $camillaData['paciente_id'] : null;
+        $camilla = new Camilla($camillaData);
         $camilla->save();
         session()->flash('success', 'Camilla creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
         return redirect()->route('camillas.index');
@@ -78,11 +81,12 @@ class CamillaController extends Controller
     public function edit(Camilla $camilla)
     {
         $celadors = Celador::all();
+        $pacientes = Paciente::all();
         $tipo_camillas = TipoCamilla::all();
         if(Auth::user()->tipo_usuario_id == 2) {
-            return view('camillas/edit', ['tipo_camillas' => $tipo_camillas, 'celadors' => Auth::user()->celadors, 'camilla' => $camilla]);
+            return view('camillas/edit', ['tipo_camillas' => $tipo_camillas, 'celadors' => Auth::user()->celadors, 'camilla' => $camilla, 'pacientes' => $pacientes]);
         }
-        return view('camillas/edit', ['tipo_camillas' => $tipo_camillas, 'celadors' => $celadors, 'camilla' => $camilla]);
+        return view('camillas/edit', ['tipo_camillas' => $tipo_camillas, 'celadors' => $celadors, 'camilla' => $camilla, 'pacientes' => $pacientes]);
     }
 
     /**
@@ -98,6 +102,7 @@ class CamillaController extends Controller
             'precio' => 'required|numeric',
             'fecha_adquisicion' => 'required|date',
             'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
+            'paciente_id' => 'nullable',
         ]);
         $camilla->fill($request->all());
         $camilla->save();

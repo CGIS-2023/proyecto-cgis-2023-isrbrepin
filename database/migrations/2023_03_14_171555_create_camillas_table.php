@@ -18,8 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('precio');
             $table->date('fecha_adquisicion');
+            $table->unsignedBigInteger('paciente_id')->nullable();
             $table->foreignId('celador_id')->constrained()->onDelete('cascade');
-            $table->foreignId('paciente_id')->constrained()->onDelete('cascade')->nullable();
+            
         });
     }
 
