@@ -7,6 +7,7 @@ use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\CamillaController;
 use App\Http\Controllers\TipoCamillaController;
 use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\PacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
         'especialidads' => EspecialidadController::class,
         'celadors' => CeladorController::class,
         'camillas' => CamillaController::class,
+        'pacientes' => PacienteController::class,
     ]);
     Route::post('/salas/{sala}/attach-camilla', [SalaController::class, 'attach_camilla'])
         ->name('salas.attachCamilla')

@@ -33,8 +33,8 @@ class PacienteSeeder extends Seeder
                 'nuhsa' => "AN1234567891",
             ],
             [
-                'nombre' => "Marc Pelaez",
-                'apellido' => "Brea",
+                'nombre' => "Marc",
+                'apellido' => "Pelaez",
                 'nuhsa' => "AN1234567891",
             ],
         ]);

@@ -49,6 +49,7 @@ class CamillaController extends Controller
             'precio' => 'required|numeric',
             'fecha_adquisicion' => 'required|date',
             'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
+            'paciente_id' => 'exists:paciente,id',
         ]);
         $camilla = new Camilla($request->all());
         $camilla->save();

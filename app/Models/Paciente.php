@@ -16,8 +16,8 @@ class Paciente extends Model
         return $this->hasOne(Camilla::class);
     }
 
-    public function getNompreApellidoAttribute()
+    public function getNombreApellidoAttribute()
     {
-        return $this->nombre . $this->apellido;
+        return $this->nombre . " " . $this->apellido;
     }
 }

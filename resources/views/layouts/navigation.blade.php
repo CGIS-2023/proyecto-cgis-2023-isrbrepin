@@ -37,6 +37,9 @@
                             <x-nav-link :href="route('especialidads.index')" :active="request()->routeIs('especialidads.index') or request()->routeIs('especialidads.create') or request()->routeIs('especialidads.edit') or request()->routeIs('especialidads.show')">
                                 {{ __('Especialidades') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes.index') or request()->routeIs('pacientes.create') or request()->routeIs('pacientes.edit') or request()->routeIs('pacientes.show')">
+                                {{ __('Pacientes') }}
+                            </x-nav-link>
                             
                 </div>
             </div>

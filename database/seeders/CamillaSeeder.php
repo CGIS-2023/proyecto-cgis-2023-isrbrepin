@@ -42,7 +42,7 @@ class CamillaSeeder extends Seeder
                 'precio' => 400,
                 'fecha_adquisicion' => '2022-01-01',
                 'tipo_camilla_id' => 1,
-                'paciente_id' => 3,
+                'paciente_id' => null,
             ],
         ]);
     }

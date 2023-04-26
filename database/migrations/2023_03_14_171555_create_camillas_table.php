@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('precio');
             $table->date('fecha_adquisicion');
             $table->foreignId('celador_id')->constrained()->onDelete('cascade');
-            $table->foreignId('paciente_id')->constrained()->onDelete('cascade');
+            $table->foreignId('paciente_id')->constrained()->onDelete('cascade')->nullable();
         });
     }
 

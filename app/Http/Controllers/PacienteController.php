@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePacienteRequest;
-use App\Http\Requests\UpdatePacienteRequest;
+use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Rules\Nuhsa;
 
 class PacienteController extends Controller
 {
@@ -15,7 +15,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
+        $pacientes = Paciente::paginate(25);
+        return view('/pacientes/index', ['pacientes' => $pacientes]);
     }
 
     /**
@@ -23,9 +24,9 @@ class PacienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Paciente $paciente)
     {
-        //
+        return view('pacientes/create', ['paciente' => $paciente]);
     }
 
     /**
@@ -34,9 +35,19 @@ class PacienteController extends Controller
      * @param  \App\Http\Requests\StorePacienteRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePacienteRequest $request)
+    public function store(Request $request)
     {
-        //
+        $rules = [
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',            
+        ];
+        $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', new Nuhsa()]];
+        $reglas = array_merge($reglas_paciente, $rules); // Creo un array con las reglas generales + nuhsa
+        $this->validate($request, $reglas); //Lo valido
+        $paciente = new Paciente($request->all());
+        $paciente->save();
+        session()->flash('success', 'Paciente creado correctamente.'); // Si nos da tiempo haremos este mensaje internacionalizable y parametrizable
+        return redirect()->route('pacientes.index'); //Te manda al index de nuevo
     }
 
     /**
@@ -47,7 +58,8 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        //
+        $pacientes = Paciente::all();
+        return view('pacientes/show', ['paciente' => $paciente]);
     }
 
     /**
@@ -58,7 +70,7 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        return view('pacientes/edit', ['paciente' => $paciente]);
     }
 
     /**
@@ -68,9 +80,19 @@ class PacienteController extends Controller
      * @param  \App\Models\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePacienteRequest $request, Paciente $paciente)
+    public function update(Request $request, Paciente $paciente)
     {
-        //
+        $rules = [
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',            
+        ];
+        $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', new Nuhsa()]];
+        $reglas = array_merge($reglas_paciente, $rules); // Creo un array con las reglas generales + nuhsa
+        $this->validate($request, $reglas); //Lo valido
+        $paciente->fill($request->all());
+        $paciente->save();
+        session()->flash('success', 'Paciente modificado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('pacientes.index');
     }
 
     /**
@@ -81,6 +103,12 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
-        //
+        if($paciente->delete()) {
+            session()->flash('success', 'Paciente borrado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        }
+        else{
+            session()->flash('warning', 'El paciente no pudo borrarse. Es probable que se deba a que tenga asociada información como citas que dependen de él.');
+        }
+        return redirect()->route('pacientes.index');
     }
 }
