@@ -9,11 +9,15 @@ class Paciente extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'apellido', 'nuhsa'];
+    protected $fillable = ['nombre', 'apellido', 'nuhsa', 'patologia_id'];
 
 
     public function camilla(){
         return $this->hasOne(Camilla::class);
+    }
+
+    public function patologia(){
+        return $this->belongsTo(Patologia::class);
     }
 
     public function getNombreApellidoAttribute()

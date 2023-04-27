@@ -27,7 +27,9 @@ class AuthServiceProvider extends ServiceProvider
         Sala::class => SalaPolicy::class,
         TipoCamilla::class => TipoCamillaPolicy::class,
         Celador::class => CeladorPolicy::class,
-        Camilla::class => CamillaPolicy::class
+        Camilla::class => CamillaPolicy::class,
+        Especialidad::class => EspecialidadPolicy::class,
+        Patologia::class => PatologiaPolicy::class
     ];
 
     /**

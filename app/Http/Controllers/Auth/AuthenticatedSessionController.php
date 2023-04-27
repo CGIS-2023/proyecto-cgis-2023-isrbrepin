@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('salas.index');
+        return redirect()->route('dashboard');
     }
 
     /**

@@ -21,21 +21,25 @@ class PacienteSeeder extends Seeder
                 'nombre' => "Rocio",
                 'apellido' => "Muñoz",
                 'nuhsa' => "AN1234567890",
+                'patologia_id' => 1,
             ],
             [
                 'nombre' => "David",
                 'apellido' => "Brea",
                 'nuhsa' => "AN1234567891",
+                'patologia_id' => 2,
             ],
             [
                 'nombre' => "Joan",
                 'apellido' => "Verdu",
                 'nuhsa' => "AN1234567891",
+                'patologia_id' => 3,
             ],
             [
                 'nombre' => "Marc",
                 'apellido' => "Pelaez",
                 'nuhsa' => "AN1234567891",
+                'patologia_id' => 4,
             ],
         ]);
     }
