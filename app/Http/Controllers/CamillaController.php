@@ -23,6 +23,9 @@ class CamillaController extends Controller
     public function index()
     {
         $camillas = Camilla::orderBy('fecha_adquisicion', 'desc')->paginate(25);
+        if(Auth::user()->tipo_usuario_id == 2){
+            $camillas = Auth::user()->celador->camillas()->orderBy('fecha_adquisicion', 'desc')->paginate(25);
+        }
         return view('/camillas/index', ['camillas' => $camillas]);
     }
 

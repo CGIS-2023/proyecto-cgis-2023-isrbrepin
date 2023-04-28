@@ -47,6 +47,17 @@
                             </div>
 
                             <div class="mt-4">
+                            <x-label for="especialidad" :value="__('Especialidad')" />
+
+                            <x-input id="especialidad" class="block mt-1 w-full"
+                                     type="text"
+                                     name="especialidad"
+                                     disabled
+                                     :value="$medico->especialidad->nombre"
+                                     required />
+                        </div>
+
+                            <div class="mt-4">
                                 <x-label for="fecha_nacimiento" :value="__('Fecha de Nacimiento')" />
 
                                 <x-input readonly disabled id="fecha_nacimiento" class="block mt-1 w-full"

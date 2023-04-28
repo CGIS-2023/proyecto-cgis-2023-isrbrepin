@@ -3,4 +3,4 @@
 </svg> --}}
 
 {{-- <img src="https://psicologia.us.es/sites/psicologia/files/LogoPsico_US_nuevo.png" {{ $attributes }}> --}}
-<img src="{{ asset('storage/MarcarUScuadradat.png') }}" {{ $attributes }}>
+<img src="{{ asset('storage/logo1v2.png') }}" {{ $attributes }}>

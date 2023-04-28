@@ -139,7 +139,7 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div style="padding:1em 25em;">
-                        <img  style="width:100%;" src="https://www.informatica.us.es/docs/imagen-etsii/logo-ETSII-US-Vertical-Color.png">
+                        <img  style="width:100%;" src="storage/logo2.png">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-1">
                         <div class="p-6">

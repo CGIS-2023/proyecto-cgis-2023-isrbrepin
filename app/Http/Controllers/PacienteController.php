@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+use App\Models\Patologia;
 use App\Rules\Nuhsa;
 
 class PacienteController extends Controller
@@ -26,7 +27,8 @@ class PacienteController extends Controller
      */
     public function create(Paciente $paciente)
     {
-        return view('pacientes/create', ['paciente' => $paciente]);
+        $patologias = Patologia::all();
+        return view('pacientes/create', ['patologias' => $patologias]);
     }
 
     /**
@@ -39,7 +41,8 @@ class PacienteController extends Controller
     {
         $rules = [
             'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',            
+            'apellido' => 'required|string|max:255', 
+            'patologia_id' => 'required|exists:patologias,id',           
         ];
         $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', new Nuhsa()]];
         $reglas = array_merge($reglas_paciente, $rules); // Creo un array con las reglas generales + nuhsa

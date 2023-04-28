@@ -15,31 +15,60 @@
                             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                 {{ __('Dashboard') }}
                             </x-nav-link>
-                   
+                    
+                            @if(Auth::user()->tipo_usuario_id == 1)
                             <x-nav-link :href="route('salas.index')" :active="request()->routeIs('salas.index') or request()->routeIs('salas.create') or request()->routeIs('salas.edit') or request()->routeIs('salas.show')">
-                                {{ __('Salas') }}
+                                {{ __(' Mis salas') }}
                             </x-nav-link>
+                            @endif
 
+                            @if(Auth::user()->tipo_usuario_id == 2)
+                            <x-nav-link :href="route('camillas.index')" :active="request()->routeIs('camillas.index') or request()->routeIs('camillas.create') or request()->routeIs('camillas.edit') or request()->routeIs('camillas.show')">
+                                {{ __('Mis camillas') }}
+                            </x-nav-link>
+                            @endif
+
+                            @if(Auth::user()->tipo_usuario_id == 3)
+                            <x-nav-link :href="route('salas.index')" :active="request()->routeIs('salas.index') or request()->routeIs('salas.create') or request()->routeIs('salas.edit') or request()->routeIs('salas.show')">
+                                {{ __(' Salas') }}
+                            </x-nav-link>
+                            @endif
+
+                            @if(in_array(Auth::user()->tipo_usuario_id, [2,3]))
                             <x-nav-link :href="route('celadors.index')" :active="request()->routeIs('celadors.index') or request()->routeIs('celadors.create') or request()->routeIs('celadors.edit') or request()->routeIs('celadors.show')">
                                 {{ __('Celadores') }}
                             </x-nav-link>
+                            @endif
 
+                            @if(in_array(Auth::user()->tipo_usuario_id, [1,3]))
                             <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('medicos.index') or request()->routeIs('medicos.create') or request()->routeIs('medicos.edit') or request()->routeIs('medicos.show')">
                                 {{ __('Médicos') }}
                             </x-nav-link>
+                            @endif
 
-                            <x-nav-link :href="route('camillas.index')" :active="request()->routeIs('camillas.index') or request()->routeIs('camillas.create') or request()->routeIs('camillas.edit') or request()->routeIs('camillas.show')">
-                                {{ __('Camillas') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('tipo_camillas.index')" :active="request()->routeIs('tipo_camillas.index') or request()->routeIs('tipo_camillas.create') or request()->routeIs('tipo_camillas.edit') or request()->routeIs('tipo_camillas.show')">
-                                {{ __('Tipos de Camillas') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('especialidads.index')" :active="request()->routeIs('especialidads.index') or request()->routeIs('especialidads.create') or request()->routeIs('especialidads.edit') or request()->routeIs('especialidads.show')">
-                                {{ __('Especialidades') }}
-                            </x-nav-link>
                             <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes.index') or request()->routeIs('pacientes.create') or request()->routeIs('pacientes.edit') or request()->routeIs('pacientes.show')">
                                 {{ __('Pacientes') }}
                             </x-nav-link>
+
+                            @if(Auth::user()->tipo_usuario_id == 3)
+                            <x-nav-link :href="route('camillas.index')" :active="request()->routeIs('camillas.index') or request()->routeIs('camillas.create') or request()->routeIs('camillas.edit') or request()->routeIs('camillas.show')">
+                                {{ __('Camillas') }}
+                            </x-nav-link>
+                            @endif
+
+                            @if(Auth::user()->tipo_usuario_id == 3)
+                            <x-nav-link :href="route('tipo_camillas.index')" :active="request()->routeIs('tipo_camillas.index') or request()->routeIs('tipo_camillas.create') or request()->routeIs('tipo_camillas.edit') or request()->routeIs('tipo_camillas.show')">
+                                {{ __('Tipos de Camillas') }}
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('especialidads.index')" :active="request()->routeIs('especialidads.index') or request()->routeIs('especialidads.create') or request()->routeIs('especialidads.edit') or request()->routeIs('especialidads.show')">
+                                {{ __('Especialidades') }}
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('patologias.index')" :active="request()->routeIs('patologias.index') or request()->routeIs('patologias.create') or request()->routeIs('patologias.edit') or request()->routeIs('patologias.show')">
+                                {{ __('Patologias') }}
+                            </x-nav-link>
+                            @endif
                             
                 </div>
             </div>

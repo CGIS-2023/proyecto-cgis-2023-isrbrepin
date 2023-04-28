@@ -31,6 +31,12 @@
                         @method('put')
 
                         <div class="mt-4">
+                                <x-label for="name" :value="__('Nombre Completo')" />
+
+                                <x-input id="name" type="text" name="name" :value="$celador->user->name" required autofocus />
+                        </div>
+
+                        <div class="mt-4">
                             <x-label for="fecha_nacimiento" :value="__('Fecha de Nacimiento')" />
 
                             <x-input id="fecha_nacimiento" class="block mt-1 w-full"

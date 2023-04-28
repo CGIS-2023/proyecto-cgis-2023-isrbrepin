@@ -62,6 +62,17 @@
                                      required />
                         </div>
 
+                        <div class="mt-4">
+                            <x-label for="patologia" :value="__('Patologia')" />
+
+                            <x-input id="patologia" class="block mt-1 w-full"
+                                     type="text"
+                                     name="patologia"
+                                     disabled
+                                     :value="$paciente->patologia->nombre"
+                                     required />
+                        </div>
+
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">
                                 <a href={{route('pacientes.index')}}>

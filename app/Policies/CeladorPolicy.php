@@ -53,7 +53,7 @@ class CeladorPolicy
      */
     public function update(User $user, Celador $celador)
     {
-        return $user->tipo_usuario_id == 3 || $celador->id == $user->celador_id;
+        return $user->tipo_usuario_id == 3 ||  $user->tipo_usuario_id == 2;
     }
 
     /**
