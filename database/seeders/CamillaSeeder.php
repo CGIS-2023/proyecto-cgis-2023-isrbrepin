@@ -31,14 +31,14 @@ class CamillaSeeder extends Seeder
                 'paciente_id' => 2,
             ],
             [
-                'celador_id' => 1,
+                'celador_id' => 3,
                 'precio' => 600,
                 'fecha_adquisicion' => '2020-01-01',
                 'tipo_camilla_id' => 2,
                 'paciente_id' => 4,
             ],
             [
-                'celador_id' => 2,
+                'celador_id' => 4,
                 'precio' => 400,
                 'fecha_adquisicion' => '2022-01-01',
                 'tipo_camilla_id' => 1,

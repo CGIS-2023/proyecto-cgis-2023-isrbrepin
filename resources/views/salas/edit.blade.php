@@ -110,7 +110,8 @@
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">Camilla</th>
-                            <th class="py-3 px-6 text-left">Comentarios</th>
+                            <th class="py-3 px-6 text-left">Paciente asociado</th>
+                            <th class="py-3 px-6 text-left">Celador asociado</th>
                             <th class="py-3 px-6 text-right">Acciones</th>
                         </tr>
                         </thead>
@@ -122,9 +123,14 @@
                                         <span class="font-medium">{{$camilla->tipo_camilla->tipo}} ({{__('Id = ')}} {{$camilla->id}})</span>
                                     </div>
                                 </td>
-                                <td class="py-3 px-6 text-center whitespace-nowrap">
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$camilla->pivot->comentario}} </span>
+                                        <span class="font-medium">{{ $camilla->paciente ? $camilla->paciente->nombre_apellido : '-' }} </span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$camilla->celador->user->name}}</span>
                                     </div>
                                 </td>
 
@@ -184,12 +190,6 @@
                                     <option value="{{$camilla->id}}" @if (old('camilla_id') == $camilla->id) selected @endif>{{__('Camilla ')}} {{$camilla->tipo_camilla->tipo}}{{__(' con Id: ')}} ({{$camilla->id}})</option>
                                 @endforeach
                             </x-select>
-                        </div>
-
-                        <div>
-                            <x-label for="comentario" :value="__('Comentario')" />
-
-                            <x-input id="comentario" class="block mt-1 w-full" type="text" name="comentario" :value="old('comentario')" />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

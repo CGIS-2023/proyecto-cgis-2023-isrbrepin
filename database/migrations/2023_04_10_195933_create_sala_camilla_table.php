@@ -16,7 +16,6 @@ class CreateSalaCamillaTable extends Migration
         Schema::create('sala_camilla', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->String('comentario');
             $table->foreignId('sala_id')->constrained()->onDelete('cascade');
             $table->foreignId('camilla_id')->constrained()->onDelete('cascade');
         });

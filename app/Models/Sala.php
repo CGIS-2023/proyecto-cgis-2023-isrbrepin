@@ -20,7 +20,7 @@ class Sala extends Model
     }
     
     public function camillas(){
-        return $this->belongsToMany(Camilla::class, 'sala_camilla')->using(SalaCamillaPivot::class)->withPivot('comentario');
+        return $this->belongsToMany(Camilla::class, 'sala_camilla')->using(SalaCamillaPivot::class);
     }
 
     public function getTiempoHospitalizadoAttribute(){
@@ -32,8 +32,16 @@ class Sala extends Model
         return 'Planta: ' . $this->planta . ', Numero: ' . $this->numero_sala;
     }
 
-    public function getCamillasDisponiblesAttribute()
+    public function camillasDisponibles()
     {
-        return ;
+        $camillasDisponibles = 0;
+        foreach ($this->camillas as $camilla) {
+            if (is_null($camilla->paciente_id)) {
+                $camillasDisponibles++;
+            }
+        }
+        return $camillasDisponibles;
     }
+
+
 }

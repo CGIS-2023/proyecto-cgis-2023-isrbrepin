@@ -34,6 +34,24 @@ class MedicoSeeder extends Seeder
                 'user_id' => 3,
                 'especialidad_id' => 1,
             ],
+            [
+                'fecha_nacimiento' => "1985-05-01",
+                'telefono' => "653034567",
+                'fecha_contratacion' => "2016-01-01",
+                'vacunado' => 0,
+                'sueldo' => 1400.0,
+                'user_id' => 4,
+                'especialidad_id' => 3,
+            ],
+            [
+                'fecha_nacimiento' => "1985-05-01",
+                'telefono' => "623234567",
+                'fecha_contratacion' => "2016-01-01",
+                'vacunado' => 1,
+                'sueldo' => 1400.0,
+                'user_id' => 5,
+                'especialidad_id' => 2,
+            ],
         ]);  
     }
 }

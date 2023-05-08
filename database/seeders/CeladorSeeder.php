@@ -21,14 +21,28 @@ class CeladorSeeder extends Seeder
                 'telefono' => "601234567",
                 'fecha_contratacion' => "2021-01-01",
                 'sueldo' => 1250.0,
-                'user_id' => 4,
+                'user_id' => 6,
             ],
             [
                 'fecha_nacimiento' => "1985-05-01",
                 'telefono' => "653234567",
                 'fecha_contratacion' => "2016-01-01",
                 'sueldo' => 1400.0,
-                'user_id' => 5,
+                'user_id' => 7,
+            ],
+            [
+                'fecha_nacimiento' => "1995-05-01",
+                'telefono' => "653234467",
+                'fecha_contratacion' => "2016-01-01",
+                'sueldo' => 1400.0,
+                'user_id' => 8,
+            ],
+            [
+                'fecha_nacimiento' => "1975-05-01",
+                'telefono' => "653214567",
+                'fecha_contratacion' => "2016-01-01",
+                'sueldo' => 1400.0,
+                'user_id' => 9,
             ],
         ]);
     }

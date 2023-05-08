@@ -32,6 +32,16 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345678'),
             ],
             [
+                'name' => "Naomi Vargas",
+                'email' => "medico3@medico.com",
+                'password' => Hash::make('12345678'),
+            ],
+            [
+                'name' => "Mark Evans",
+                'email' => "medico4@medico.com",
+                'password' => Hash::make('12345678'),
+            ],
+            [
                 'name' => "Pedro Muñoz",
                 'email' => "celador1@celador.com",
                 'password' => Hash::make('12345678'),
@@ -39,6 +49,16 @@ class UserSeeder extends Seeder
             [
                 'name' => "Pablo Fernandez",
                 'email' => "celador2@celador.com",
+                'password' => Hash::make('12345678'),
+            ],
+            [
+                'name' => "Matias Pratts",
+                'email' => "celador3@celador.com",
+                'password' => Hash::make('12345678'),
+            ],
+            [
+                'name' => "Iñaki Macias",
+                'email' => "celador4@celador.com",
                 'password' => Hash::make('12345678'),
             ],
         ]);

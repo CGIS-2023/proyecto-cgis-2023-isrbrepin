@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('nuhsa');
+            $table->string('nuhsa')->unique();
         });
     }
 

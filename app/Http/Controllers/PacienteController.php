@@ -44,7 +44,7 @@ class PacienteController extends Controller
             'apellido' => 'required|string|max:255', 
             'patologia_id' => 'required|exists:patologias,id',           
         ];
-        $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', new Nuhsa()]];
+        $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', 'unique:pacientes', new Nuhsa()]];
         $reglas = array_merge($reglas_paciente, $rules); // Creo un array con las reglas generales + nuhsa
         $this->validate($request, $reglas); //Lo valido
         $paciente = new Paciente($request->all());

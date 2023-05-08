@@ -155,15 +155,16 @@ class SalaController extends Controller
 
     public function attach_camilla(Request $request, Sala $sala)
     {
-        $this->validateWithBag('attach',$request, [
-            'camilla_id' => 'required|exists:celadors,id',
-            'camilla_id' => 'required|exists:celadors,id',
+        $this->validateWithBag('attach', $request, [
+            'camilla_id' => 'required|exists:camillas,id',
+            'comentario' => 'nullable|string', // agregar regla de validación nullable
         ]);
-        $sala->camillas()->attach($request->camilla_id, ['comentario' => $request->comentario,
-        ]
-    );
+    
+        $sala->camillas()->attach($request->camilla_id);
+    
         return redirect()->route('salas.edit', $sala->id);
     }
+    
 
     public function detach_camilla(Sala $sala, Camilla $camilla)
     {
