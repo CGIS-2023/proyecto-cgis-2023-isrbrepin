@@ -157,6 +157,7 @@ class SalaController extends Controller
     {
         $this->validateWithBag('attach',$request, [
             'camilla_id' => 'required|exists:celadors,id',
+            'camilla_id' => 'required|exists:celadors,id',
         ]);
         $sala->camillas()->attach($request->camilla_id, ['comentario' => $request->comentario,
         ]

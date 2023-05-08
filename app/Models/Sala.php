@@ -31,4 +31,9 @@ class Sala extends Model
     {
         return 'Planta: ' . $this->planta . ', Numero: ' . $this->numero_sala;
     }
+
+    public function getCamillasDisponiblesAttribute()
+    {
+        return ;
+    }
 }

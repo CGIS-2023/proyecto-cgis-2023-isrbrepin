@@ -9,7 +9,12 @@
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
     <div class="bg-blue-300 overflow-hidden shadow-sm sm:rounded-lg ">
       <div class="p-6 border border-blue-500">
+        @if(in_array(Auth::user()->tipo_usuario_id, [1,2]))
         <h1 class="text-center font-bold text-3xl">Bienvenido, {{ Auth::user()->tipo_usuario }}  {{ Auth::user()->name }}!</h1>
+        @endif
+        @if(Auth::user()->tipo_usuario_id == 3)
+        <h1 class="text-center font-bold text-3xl">Bienvenido, {{ Auth::user()->name }}!</h1>
+        @endif
       </div>
     </div>
 

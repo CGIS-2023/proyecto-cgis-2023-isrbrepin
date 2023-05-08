@@ -50,19 +50,20 @@ class RegisteredUserController extends Controller
         ];
 
         $tipo_usuario_id = intval($request->tipo_usuario_id);
-        /*
+
         if($tipo_usuario_id == 1){
             //Médico
             $reglas_medico = ['telefono' => 'required|string|max:255',
                 'fecha_contratacion' => 'required|date',
+                'fecha_nacimiento' => 'required|date',
                 'vacunado' => 'required|boolean',
                 'sueldo' => 'required|numeric',
                 'especialidad_id' => 'required|exists:especialidads,id'
             ];
             $rules = array_merge($reglas_medico, $rules);
         }
-        */
-        if($tipo_usuario_id == 2){
+
+        elseif($tipo_usuario_id == 2){
             //Celador
             $reglas_celador = ['name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -80,15 +81,15 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        /*
+    
         if($tipo_usuario_id == 1) {
             //Médico
             $medico = new Medico($request->all());
             $medico->user_id = $user->id;
             $medico->save();
         }
-        */
-        if($tipo_usuario_id == 2){
+        
+        elseif($tipo_usuario_id == 2){
             //Celador
             $celador = new Celador($request->all());
             $celador->user_id = $user->id;

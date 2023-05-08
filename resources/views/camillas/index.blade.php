@@ -45,7 +45,7 @@
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{ $camilla->paciente ? $camilla->paciente->nombre_apellido : 'Camilla vacía' }}</span>
+                                        <span class="font-medium">{{ $camilla->paciente ? $camilla->paciente->nombre_apellido : '-' }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
