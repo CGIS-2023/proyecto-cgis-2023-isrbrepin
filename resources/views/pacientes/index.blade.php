@@ -62,7 +62,7 @@
                                                 </svg>
                                             </a>
                                         </div>
-
+                                        @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 3)
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <form id="delete-form-{{$paciente->id}}" method="POST" action="{{ route('pacientes.destroy', $paciente->id) }}">
                                                 @csrf
@@ -74,6 +74,7 @@
                                                 </a>
                                             </form>
                                         </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

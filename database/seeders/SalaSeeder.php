@@ -21,7 +21,6 @@ class SalaSeeder extends Seeder
                 'fecha_hora_inicio' => '2022-10-30 10:15:00',
                 'planta' => "3",
                 'numero_sala' => "135",
-                'numero_camillas' => 8,
 
             ],
             [
@@ -30,7 +29,6 @@ class SalaSeeder extends Seeder
                 'fecha_hora_inicio' => '2023-01-30 09:30:00',
                 'planta' => "1",
                 'numero_sala' => "45",
-                'numero_camillas' => 4,
             ],
             [
                 'medico_id' => 3,
@@ -38,7 +36,6 @@ class SalaSeeder extends Seeder
                 'fecha_hora_inicio' => '2023-02-15 11:30:00',
                 'planta' => "2",
                 'numero_sala' => "99",
-                'numero_camillas' => 2,
             ],
         ]);
 

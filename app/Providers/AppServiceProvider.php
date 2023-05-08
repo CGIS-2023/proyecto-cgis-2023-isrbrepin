@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use App\Rules\MaxCamillas;
+use App\Rules\MaxSalas;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('max_camillas', MaxCamillas::class);
+        Validator::extend('max_salas', MaxSalas::class);
     }
 }

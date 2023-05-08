@@ -8,6 +8,7 @@ use App\Models\TipoCamilla;
 use App\Models\Paciente;
 use App\Models\Celador;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\MaxCamillas;
 
 class CamillaController extends Controller
 {
@@ -54,6 +55,8 @@ class CamillaController extends Controller
             'fecha_adquisicion' => 'required|date',
             'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
             'paciente_id' => 'nullable',
+            'celador_id' => ['required', new MaxCamillas(3)],
+            
         ]);
         $camillaData = $request->all();
         $camillaData['paciente_id'] = isset($camillaData['paciente_id']) ? $camillaData['paciente_id'] : null;
@@ -106,6 +109,7 @@ class CamillaController extends Controller
             'fecha_adquisicion' => 'required|date',
             'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
             'paciente_id' => 'nullable',
+            'celador_id' => ['required', new MaxCamillas(3)],
         ]);
         $camilla->fill($request->all());
         $camilla->save();

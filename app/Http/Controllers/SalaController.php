@@ -9,6 +9,7 @@ use App\Models\Camilla;
 use App\Models\Medico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Rules\MaxSalas;
 
 class SalaController extends Controller
 {
@@ -23,7 +24,7 @@ class SalaController extends Controller
      */
     public function index()
     {
-        $salas = Sala::orderBy('fecha_hora_inicio', 'desc')->paginate(25);
+        $salas = Sala::orderBy('fecha_hora_inicio', 'desc')->paginate(10);
         
         if(Auth::user()->tipo_usuario_id == 1){
             $salas = Auth::user()->medico->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
@@ -60,7 +61,7 @@ class SalaController extends Controller
             'fecha_hora_inicio' => 'required|date',
             'planta' => 'required|string|max:255',
             'numero_sala' => 'required|string|max:255',
-            'numero_camillas' => 'required|numeric|min:0',
+            'medico_id' => ['required', new MaxSalas(2)],
         ];
         if(Auth::user()->tipo_usuario_id == 1){
             $reglas_medico = ['medico_id' => ['required', 'exists:medicos,id', Rule::in(Auth::user()->medico->id)]];
@@ -127,7 +128,7 @@ class SalaController extends Controller
             'fecha_hora_inicio' => 'required|date',
             'planta' => 'required|string|max:255',
             'numero_sala' => 'required|string|max:255',
-            'numero_camillas' => 'required|numeric|min:0',
+            'medico_id' => ['required', new MaxSalas(2)],
         ];
         $this->validate($request, $reglas);
         $sala->fill($request->all());

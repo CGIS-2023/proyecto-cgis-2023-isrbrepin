@@ -85,13 +85,13 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="numero_camillas" :value="__('Número de Camillas')" />
+                            <x-label for="numero_camillas" :value="__('Número de Camillas Disponibles')" />
 
                             <x-input id="numero_camillas" class="block mt-1 w-full"
                                      type="text"
                                      name="numero_camillas"
                                      disabled
-                                     :value="$sala->numero_camillas"
+                                     :value="$sala->camillasDisponibles()"
                                      required />
                         </div>
 

@@ -16,7 +16,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::paginate(25);
+        $pacientes = Paciente::paginate(10);
         return view('/pacientes/index', ['pacientes' => $pacientes]);
     }
 

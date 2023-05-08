@@ -22,7 +22,7 @@ class CeladorController extends Controller
      */
     public function index()
     {
-        $celadors = Celador::paginate(25);
+        $celadors = Celador::paginate(10);
         return view('/celadors/index', ['celadors' => $celadors]);
     }
 

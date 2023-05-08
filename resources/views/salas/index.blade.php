@@ -27,7 +27,7 @@
                             <th class="py-3 px-6 text-left">Planta</th>
                             <th class="py-3 px-6 text-left">Numero</th>
                             <th class="py-3 px-6 text-left">Ubicación</th>
-                            <th class="py-3 px-6 text-left">Nº Camillas</th>
+                            <th class="py-3 px-6 text-left">Nº Camillas Disponibles</th>
 
                             <th></th>
                         </tr>
