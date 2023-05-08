@@ -9,6 +9,8 @@ use App\Http\Controllers\TipoCamillaController;
 use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\PatologiaController;
+use App\Http\Controllers\SueldosController;
+use App\Http\Controllers\InventarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,11 @@ Route::middleware(['auth'])->group(function () {
         'camillas' => CamillaController::class,
         'pacientes' => PacienteController::class,
         'patologias' => PatologiaController::class,
+        'sueldos' => SueldosController::class,
+        'inventarios' => InventarioController::class,
     ]);
+    Route::get('/sueldos', [SueldosController::class, 'index']);
+    Route::get('/inventarios', [InventarioController::class, 'index']);
     Route::post('/salas/{sala}/attach-camilla', [SalaController::class, 'attach_camilla'])
         ->name('salas.attachCamilla')
         ->middleware('can:attach_camilla,sala');

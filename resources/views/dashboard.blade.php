@@ -46,17 +46,12 @@
         @if(Auth::user()->tipo_usuario_id == 2)
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white"><a href="/celadors/{{ Auth::user()->celador->id }}/edit" class="pl-4 text-lg">Editar perfil</a></li>
         @endif
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white"><form method="POST" action="{{ route('logout') }}">
-  @csrf <!-- Agrega el token CSRF -->
-  <button type="submit" class="pl-4 text-lg">Cerrar sesión</button>
-</form>
-
       </ul>
   </div>
 </div>
 
 
-
+@if(Auth::user()->tipo_usuario_id == 3)
   <div class="lg:mr-4 mx-auto float-left ml-0 sm:px-10 lg:px-2 w-full">
     <div class="bg-white border border-blue-500 shadow-sm sm:rounded-lg">
       <div class="bg-primary p-4 bg-blue-300">
@@ -66,9 +61,8 @@
       </div>
       <ul>
       @if(Auth::user()->tipo_usuario_id == 3)
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/camillas" class="pl-4 text-lg">Camillas</a></li>
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/salas" class="pl-4 text-lg">Salas</a></li>
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/salas" class="pl-4 text-lg">Pacientes</a></li>
+        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/sueldos" class="pl-4 text-lg">Gastos en personal</a></li>
+        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/inventarios" class="pl-4 text-lg">Gastos en inventario</a></li>
         @endif
         @if(Auth::user()->tipo_usuario_id == 2)
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/camillas" class="pl-4 text-lg">Mis camillas</a></li>
@@ -82,15 +76,10 @@
         @if(Auth::user()->tipo_usuario_id == 2)
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/celadors/{{ Auth::user()->celador->id }}/edit" class="pl-4 text-lg">Editar perfil</a></li>
         @endif
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><form method="POST" action="{{ route('logout') }}">
-  @csrf <!-- Agrega el token CSRF -->
-  <button type="submit" class="pl-4 text-lg">Cerrar sesión</button>
-</form>
-
       </ul>
   </div>
 </div>
-
+@endif
 
 <div class="max-w-xs lg:mr-4 mx-auto float-left ml-0 sm:px-10 lg:px-2 w-full">
     <div class="bg-white border border-blue-500 shadow-sm sm:rounded-lg">
@@ -100,23 +89,6 @@
         </h2>
       </div>
       <ul>
-      @if(Auth::user()->tipo_usuario_id == 3)
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/camillas" class="pl-4 text-lg">Camillas</a></li>
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/salas" class="pl-4 text-lg">Salas</a></li>
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/salas" class="pl-4 text-lg">Pacientes</a></li>
-        @endif
-        @if(Auth::user()->tipo_usuario_id == 2)
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/camillas" class="pl-4 text-lg">Mis camillas</a></li>
-        @endif
-        @if(Auth::user()->tipo_usuario_id == 1)
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/salas" class="pl-4 text-lg">Mis salas</a></li>
-        @endif
-        @if(Auth::user()->tipo_usuario_id == 1)
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/medicos/{{ Auth::user()->medico->id }}/edit" class="pl-4 text-lg">Editar perfil</a></li>
-        @endif
-        @if(Auth::user()->tipo_usuario_id == 2)
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/celadors/{{ Auth::user()->celador->id }}/edit" class="pl-4 text-lg">Editar perfil</a></li>
-        @endif
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><form method="POST" action="{{ route('logout') }}">
   @csrf <!-- Agrega el token CSRF -->
   <button type="submit" class="pl-4 text-lg">Cerrar sesión</button>

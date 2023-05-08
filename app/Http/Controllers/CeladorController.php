@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Celador;
+use App\Models\Medico;
 use App\Models\Camilla;
 use App\Models\Sala;
 use App\Models\User;
@@ -20,6 +21,7 @@ class CeladorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $celadors = Celador::paginate(10);
@@ -51,7 +53,7 @@ class CeladorController extends Controller
             'password' => 'required|string|confirmed|min:8',
             'telefono' => 'required|string|max:255',
             'fecha_contratacion' => 'required|date',
-            'sueldo' => 'required|numeric',
+            'sueldo' => 'required|numeric|min:1200|max:1400',
         ]);
         $user = User::create([
             'name' => $request->name,
@@ -103,7 +105,7 @@ class CeladorController extends Controller
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'required|string',
             'fecha_contratacion' => 'required|date',
-            'sueldo' => 'required|numeric',
+            'sueldo' => 'required|numeric|min:1200|max:1400',
         ];
         $this->validate($request, $reglas);
         $celador->fill($request->all());
