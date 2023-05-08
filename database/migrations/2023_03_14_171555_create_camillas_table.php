@@ -19,7 +19,9 @@ return new class extends Migration
             $table->integer('precio');
             $table->date('fecha_adquisicion');
             $table->unsignedBigInteger('paciente_id')->nullable();
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->foreignId('celador_id')->constrained()->onDelete('cascade');
+            $table->unique('paciente_id', 'unique_paciente_en_camilla');
             
         });
     }

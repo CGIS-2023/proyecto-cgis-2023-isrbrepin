@@ -74,14 +74,14 @@
                                          type="hidden"
                                          name="tipo_camilla_id"
                                          :value="$tipo_camilla->id"
-                                         required />
+                                          />
                                 <x-input class="block mt-1 w-full"
                                          type="text"
                                          disabled
                                          value="{{$tipo_camilla->tipo}}"
                                 />
                             @else
-                                <x-select id="tipo_camilla_id" name="tipo_camilla_id" required>
+                                <x-select id="tipo_camilla_id" name="tipo_camilla_id">
                                     <option value="">{{__('Elige un tipo de camilla')}}</option>
                                     @foreach ($tipo_camillas as $tipo_camilla)
                                         <option value="{{$tipo_camilla->id}}" @if ($camilla->tipo_camilla_id == $tipo_camilla->id) selected @endif>{{$tipo_camilla->tipo}}</option>
