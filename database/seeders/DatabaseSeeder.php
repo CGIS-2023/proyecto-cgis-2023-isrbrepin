@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            EspecialidadSeeder::class, PatologiaSeeder::class, TipoCamillaSeeder::class, PacienteSeeder::class, UserSeeder::class, CeladorSeeder::class, CamillaSeeder::class, MedicoSeeder::class, SalaSeeder::class
+            ClienteSeeder::class, EspecialidadSeeder::class, PatologiaSeeder::class, TipoCamillaSeeder::class, PacienteSeeder::class, UserSeeder::class, CeladorSeeder::class, CamillaSeeder::class, MedicoSeeder::class, SalaSeeder::class
         ]);
     }
 }
