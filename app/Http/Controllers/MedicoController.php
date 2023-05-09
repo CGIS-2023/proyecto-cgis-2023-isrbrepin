@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 class MedicoController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Medico::class, 'medico');
+    }
     /**
      * Display a listing of the resource.
      *

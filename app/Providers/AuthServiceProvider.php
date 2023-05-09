@@ -7,11 +7,13 @@ use App\Models\TipoCamilla;
 use App\Models\Camilla;
 use App\Models\Celador;
 use App\Models\Medico;
+use App\Models\Paciente;
 use App\Policies\CamillaPolicy;
 use App\Policies\SalaPolicy;
 use App\Policies\TipoCamillaPolicy;
 use App\Policies\CeladorPolicy;
 use App\Policies\MedicoPolicy;
+use App\Policies\PacientePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -29,7 +31,9 @@ class AuthServiceProvider extends ServiceProvider
         Celador::class => CeladorPolicy::class,
         Camilla::class => CamillaPolicy::class,
         Especialidad::class => EspecialidadPolicy::class,
-        Patologia::class => PatologiaPolicy::class
+        Patologia::class => PatologiaPolicy::class,
+        Medico::class => MedicoPolicy::class,
+        Paciente::class => PacientePolicy::class,
     ];
 
     /**

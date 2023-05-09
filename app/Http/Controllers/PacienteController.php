@@ -9,6 +9,10 @@ use App\Rules\Nuhsa;
 
 class PacienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Paciente::class, 'paciente');
+    }
     /**
      * Display a listing of the resource.
      *

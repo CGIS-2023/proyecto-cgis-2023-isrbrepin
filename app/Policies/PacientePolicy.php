@@ -18,7 +18,7 @@ class PacientePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class PacientePolicy
      */
     public function view(User $user, Paciente $paciente)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class PacientePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class PacientePolicy
      */
     public function update(User $user, Paciente $paciente)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -65,7 +65,7 @@ class PacientePolicy
      */
     public function delete(User $user, Paciente $paciente)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -77,7 +77,7 @@ class PacientePolicy
      */
     public function restore(User $user, Paciente $paciente)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -89,6 +89,6 @@ class PacientePolicy
      */
     public function forceDelete(User $user, Paciente $paciente)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 }

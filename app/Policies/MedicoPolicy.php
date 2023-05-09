@@ -18,7 +18,7 @@ class MedicoPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class MedicoPolicy
      */
     public function view(User $user, Medico $medico)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class MedicoPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -53,7 +53,7 @@ class MedicoPolicy
      */
     public function update(User $user, Medico $medico)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -65,7 +65,7 @@ class MedicoPolicy
      */
     public function delete(User $user, Medico $medico)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -77,7 +77,7 @@ class MedicoPolicy
      */
     public function restore(User $user, Medico $medico)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 
     /**
@@ -89,6 +89,6 @@ class MedicoPolicy
      */
     public function forceDelete(User $user, Medico $medico)
     {
-        //
+        return $user->tipo_usuario_id == 3;
     }
 }
