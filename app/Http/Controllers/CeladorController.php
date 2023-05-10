@@ -14,6 +14,7 @@ class CeladorController extends Controller
 {
     public function __construct()
     {
+        
         $this->authorizeResource(Celador::class, 'celador');
     }
     /**
@@ -22,10 +23,14 @@ class CeladorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $celadors = Celador::paginate(10);
-        return view('/celadors/index', ['celadors' => $celadors]);
+            if ($request->is('api/*')) {    
+                return Celador::all();
+            } else {
+                $celadors = Celador::paginate(10);
+                return view('/celadors/index', ['celadors' => $celadors]);
+            }       
     }
 
     /**

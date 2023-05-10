@@ -63,7 +63,7 @@
       @if(Auth::user()->tipo_usuario_id == 3)
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/sueldos" class="pl-4 text-lg">Gastos en personal</a></li>
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/inventarios" class="pl-4 text-lg">Gastos en inventario</a></li>
-        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/api/personas" class="pl-4 text-lg">API</a></li>
+        <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/api/celadors" class="pl-4 text-lg">API</a></li>
         @endif
         @if(Auth::user()->tipo_usuario_id == 2)
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/camillas" class="pl-4 text-lg">Mis camillas</a></li>
