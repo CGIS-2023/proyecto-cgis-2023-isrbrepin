@@ -18,7 +18,7 @@ class CeladorPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->tipo_usuario_id == 3 || $user->tipo_usuario_id == 2;
     }
 
     /**

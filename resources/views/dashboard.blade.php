@@ -90,6 +90,7 @@
         </h2>
       </div>
       <ul>
+      <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/api/celadors" class="pl-4 text-lg">API</a></li>
         <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><form method="POST" action="{{ route('logout') }}">
   @csrf <!-- Agrega el token CSRF -->
   <button type="submit" class="pl-4 text-lg">Cerrar sesión</button>

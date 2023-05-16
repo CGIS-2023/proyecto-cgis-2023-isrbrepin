@@ -26,13 +26,19 @@ class AuthenticatedSessionController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
+    public function store(Request $request)
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        return redirect()->route('dashboard');
+            return redirect()->route('dashboard');
+        }
+
+        return back()->withErrors([
+           'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**
@@ -41,14 +47,19 @@ class AuthenticatedSessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request)
+        public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        if ($request->user()) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
+        if ($request->wantsJson()) {
+           return response()->json(['message' => 'Logout successful']);
+        }
 
         return redirect('/');
     }
+
 }
