@@ -24,9 +24,13 @@
   <div class="max-w-xs lg:mr-4 mx-auto float-left ml-0 sm:px-10 lg:px-3 w-full">
     <div class="bg-white border border-blue-500 shadow-sm sm:rounded-lg">
       <div class="bg-primary p-4 bg-blue-300">
-        <h2 class="font-bold text-3xl leading-tight pt-0">
-          {{ __('Mi perfil') }}
+        <h2 class="font-bold text-3xl leading-tight pt-0" style="display: flex; align-items: center; justify-content: center;">
+            {{ __('Mi perfil') }}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
         </h2>
+
       </div>
       <ul>
       @if(Auth::user()->tipo_usuario_id == 3)
@@ -55,8 +59,11 @@
   <div class="lg:mr-4 mx-auto float-left ml-0 sm:px-10 lg:px-2 w-full">
     <div class="bg-white border border-blue-500 shadow-sm sm:rounded-lg">
       <div class="bg-primary p-4 bg-blue-300">
-        <h2 class="font-bold text-3xl leading-tight text-center pt-0">
+      <h2 class="font-bold text-3xl leading-tight pt-0" style="display: flex; align-items: center; justify-content: center;">
           {{ __('Menú') }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+          </svg>
         </h2>
       </div>
       <ul>
@@ -85,9 +92,13 @@
 <div class="max-w-xs lg:mr-4 mx-auto float-left ml-0 sm:px-10 lg:px-2 w-full">
     <div class="bg-white border border-blue-500 shadow-sm sm:rounded-lg">
       <div class="bg-primary p-4 bg-blue-300">
-        <h2 class="font-bold text-3xl leading-tight text-center pt-0">
-          {{ __('Utilidades') }}
-        </h2>
+      <h2 class="font-bold text-3xl leading-tight pt-0" style="display: flex; align-items: center; justify-content: center;">
+        {{ __('Utilidades') }}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </h2>
+
       </div>
       <ul>
       <li class="border-t border-2 border-gray-400 pt-3 pb-3 bg-white text-center"><a href="/api/celadors" class="pl-4 text-lg">API</a></li>

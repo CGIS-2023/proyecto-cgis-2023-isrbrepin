@@ -22,15 +22,33 @@ class SalaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $salas = Sala::orderBy('fecha_hora_inicio', 'desc')->paginate(10);
-        
-        if(Auth::user()->tipo_usuario_id == 1){
-            $salas = Auth::user()->medico->salas()->orderBy('fecha_hora_inicio', 'desc')->paginate(25);
-        }
-        return view('/salas/index', ['salas' => $salas]);
+    public function index(Request $request)
+{
+    $salasQuery = Sala::query();
+
+    if (Auth::user()->tipo_usuario_id == 1) {
+        $salasQuery->where('medico_id', Auth::user()->medico->id);
     }
+
+    $defaultOrder = 'desc';
+    $currentOrder = $request->get('sort', $defaultOrder);
+
+    // Verifica el tipo de ordenamiento
+    if ($currentOrder === 'asc') {
+        $salasQuery->orderBy('id', 'desc');
+        $nextOrder = 'desc';
+    } else {
+        $salasQuery->orderBy('id', 'asc');
+        $nextOrder = 'asc';
+    }
+
+    $salas = $salasQuery->paginate(10);
+
+    return view('salas.index', compact('salas', 'currentOrder', 'nextOrder'));
+}
+
+
+
 
     /**
      * Show the form for creating a new resource.

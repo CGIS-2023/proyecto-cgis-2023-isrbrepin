@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="flex items-center mt-4 ml-2">
             @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
@@ -21,7 +21,23 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">ID</th>
+                            <th class="py-3 px-6 text-left">
+                                <a href="{{ route('salas.index', ['sort' => $currentOrder === 'asc' ? 'desc' : 'asc']) }}">
+                                <span class="flex items-center">
+                                <span>ID</span>
+                                @if ($currentOrder === 'asc')
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                                    </svg>
+                                @elseif ($currentOrder === 'desc')
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                                    </svg>
+                                @endif
+                                </span>
+                                </a>
+                            </th>
+
                             <th class="py-3 px-6 text-left">Medico Encargado</th>
                             <th class="py-3 px-6 text-left">Fecha inicio</th>
                             <th class="py-3 px-6 text-left">Planta</th>

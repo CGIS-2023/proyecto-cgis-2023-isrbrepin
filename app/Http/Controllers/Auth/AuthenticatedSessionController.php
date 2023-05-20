@@ -28,17 +28,47 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        if ($request->is('api/*')) {    
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+        
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => 'Invalid credentials',
+                ], 401);
+            }
+        
+            $credentials = request(['email', 'password']);
+        
+            if (!Auth::once($credentials)) {
+                return response()->json([
+                    'error' => 'Unauthorized',
+                ], 401);
+            }
+        
+            $user = Auth::user();
+            $tokenResult = $user->createToken('API Token');
+            $token = $tokenResult->accessToken;
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+            ]);
+            
+        } else {
+            $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->route('dashboard');
-        }
-
-        return back()->withErrors([
-           'email' => 'The provided credentials do not match our records.',
+            if (Auth::attempt($credentials)) {
+            // El usuario ha sido autenticado correctamente
+                return redirect()->intended('/dashboard');
+            } else {
+                // Las credenciales no son válidas
+                return back()->withErrors([
+                    'email' => 'Las credenciales proporcionadas no son válidas.',
         ]);
+    }
+        } 
     }
 
     /**
