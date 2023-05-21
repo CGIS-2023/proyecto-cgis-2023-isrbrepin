@@ -21,13 +21,31 @@ class CamillaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $camillas = Camilla::orderBy('fecha_adquisicion', 'desc')->paginate(25);
-        if(Auth::user()->tipo_usuario_id == 2){
-            $camillas = Auth::user()->celador->camillas()->orderBy('fecha_adquisicion', 'desc')->paginate(25);
+        $camillasQuery = Camilla::query(); // La función query() es un método estático proporcionado por Eloquent y se utiliza para crear una nueva instancia de consulta. Esta instancia de consulta se utiliza para construir la consulta que recuperará los registros de la tabla camillas.
+        //inicializa una instancia de consulta de Eloquent para la tabla camillas, lo que permite construir y ejecutar consultas para interactuar con los registros de esa tabla.
+        $celadorFiltrado = $request->get('celador_nombre');
+
+
+        if ($celadorFiltrado) {
+            $camillasQuery->whereHas('celador', function ($query) use ($celadorFiltrado) {
+                $query->whereHas('user', function ($query) use ($celadorFiltrado) {
+                    $query->where('name', 'LIKE', "%$celadorFiltrado%");
+                });
+            });
         }
-        return view('/camillas/index', ['camillas' => $camillas]);
+
+        $camillas = Camilla::orderBy('fecha_adquisicion', 'desc')->paginate(25);
+        
+        if (Auth::user()->tipo_usuario_id == 2) {
+            $camillasQuery->where('celador_id', Auth::user()->celador->id)->orderBy('fecha_adquisicion', 'desc')->paginate(25);
+
+        }
+
+        $camillas = $camillasQuery->paginate(10);
+
+        return view('camillas.index', compact('camillas', 'celadorFiltrado'));
     }
 
     /**
@@ -104,11 +122,21 @@ class CamillaController extends Controller
      */
     public function update(Request $request, Camilla $camilla)
     {
+        
         $this->validate($request, [
             'precio' => 'required|numeric',
             'fecha_adquisicion' => 'required|date',
             'tipo_camilla_id' => 'required|exists:tipo_camillas,id',
-            'paciente_id' => 'nullable',
+            'paciente_id' => [
+                'nullable',
+                'exists:pacientes,id',
+                function ($attribute, $value, $fail) use ($camilla) {
+                    // Verificar si el paciente ya está asignado a otra camilla
+                    if ($value && Camilla::where('paciente_id', $value)->where('id', '!=', $camilla->id)->exists()) {
+                        $fail('No puedes asignar el mismo paciente a dos camillas diferentes.');
+                    }
+                },
+            ],
             'celador_id' => ['required', new MaxCamillas(3)],
         ]);
         $camilla->fill($request->all());

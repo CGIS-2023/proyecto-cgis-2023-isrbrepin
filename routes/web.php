@@ -55,5 +55,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/salas/{sala}/detach-camilla/{camilla}', [SalaController::class, 'detach_camilla'])
         ->name('salas.detachCamilla')
         ->middleware('can:detach_camilla,sala');
+    Route::post('/salas/filtrar-por-medico', [SalaController::class, 'filtrarPorMedico'])->name('salas.filtrar-por-medico');
 });
 

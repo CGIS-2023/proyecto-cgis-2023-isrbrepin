@@ -25,6 +25,16 @@ class SalaController extends Controller
     public function index(Request $request)
 {
     $salasQuery = Sala::query();
+    $medicoFiltrado = $request->get('medico_nombre');
+
+
+    if ($medicoFiltrado) {
+        $salasQuery->whereHas('medico', function ($query) use ($medicoFiltrado) {
+            $query->whereHas('user', function ($query) use ($medicoFiltrado) {
+                $query->where('name', 'LIKE', "%$medicoFiltrado%");
+            });
+        });
+    }
 
     if (Auth::user()->tipo_usuario_id == 1) {
         $salasQuery->where('medico_id', Auth::user()->medico->id);
@@ -34,18 +44,20 @@ class SalaController extends Controller
     $currentOrder = $request->get('sort', $defaultOrder);
 
     // Verifica el tipo de ordenamiento
-    if ($currentOrder === 'asc') {
-        $salasQuery->orderBy('id', 'desc');
+    if ($currentOrder === 'asc') { // Si el orden actual es ascendente 
+        $salasQuery->orderBy('id', 'asc');
         $nextOrder = 'desc';
     } else {
-        $salasQuery->orderBy('id', 'asc');
+        $salasQuery->orderBy('id', 'desc');
         $nextOrder = 'asc';
     }
 
     $salas = $salasQuery->paginate(10);
 
-    return view('salas.index', compact('salas', 'currentOrder', 'nextOrder'));
+    return view('salas.index', compact('salas', 'currentOrder', 'nextOrder', 'medicoFiltrado'));
 }
+
+
 
 
 

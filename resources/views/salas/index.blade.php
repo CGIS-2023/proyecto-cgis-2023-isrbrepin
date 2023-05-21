@@ -8,15 +8,35 @@
     <div class="py-12">
         <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="flex items-center mt-4 ml-2">
-            @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
+                <div class="flex items-center mt-4 ml-2">
+                    @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
                     <form method="GET" action="{{ route('salas.create') }}">
                         <x-button type="subit" class="ml-4">
                                 {{ __('Crea sala') }}
                         </x-button>
                     </form>
                     @endif
+                    </div>
+                @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 3)
+                <div class="flex items-center mt-4 ml-2 justify-end">
+                    <form method="GET" action="{{ route('salas.index') }}">
+                        <div class="flex mr-6">
+                            <input type="text" name="medico_nombre" placeholder="Buscar médico" class="px-2 py-1 border border-gray-300 rounded-md">
+                                <x-button type="submit" class="ml-2">
+                                    {{ __('Buscar') }}
+                                </x-button>
+                            @if (request()->has('medico_nombre'))
+                            <a href="{{ route('salas.index') }}" class="ml-2 text-red-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 4.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            @endif
+                        </div>
+                    </form>
                 </div>
+                @endif
+
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">
                         <thead>

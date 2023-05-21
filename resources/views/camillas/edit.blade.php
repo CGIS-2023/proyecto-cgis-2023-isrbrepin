@@ -58,6 +58,7 @@
                             <x-label for="paciente_id" :value="__('Paciente en camilla')" />
                                 <x-select id="paciente_id" name="paciente_id" required>
                                     <option value="">{{__('Elige un paciente')}}</option>
+                                    <option value="">Camilla vacía</option>
                                     @foreach ($pacientes as $paciente)
                                         <option value="{{$paciente->id}}" @if ($camilla->paciente_id == $paciente->id) selected @endif>{{$paciente->nombre_apellido}}</option>
                                     @endforeach
