@@ -183,25 +183,25 @@ El sistema además deberá mostrar un mensaje de error en cada uno de los casos 
 
 ## 4.3. Requisitos no funcionales
 
-**Seguridad**: El sistema debe estar protegido contra el acceso no autorizado.
+**RNF-001. Seguridad**: El sistema debe estar protegido contra el acceso no autorizado.
 
-**Actuación**: El sistema debe poder manejar el número requerido de usuarios sin ninguna degradación en el rendimiento.
+**RNF-002. Actuación**: El sistema debe poder manejar el número requerido de usuarios sin ninguna degradación en el rendimiento.
 
-**Escalabilidad**: El sistema debe ser capaz de escalar hacia arriba o hacia abajo según sea necesario.
+**RNF-003. Escalabilidad**: El sistema debe ser capaz de escalar hacia arriba o hacia abajo según sea necesario.
 
-**Disponibilidad**: El sistema debe estar disponible cuando sea necesario.
+**RNF-004. Disponibilidad**: El sistema debe estar disponible cuando sea necesario.
 
-**Mantenimiento**: El sistema debe ser fácil de mantener y actualizar.
+**RNF-005. Mantenimiento**: El sistema debe ser fácil de mantener y actualizar.
 
-**Portabilidad**: El sistema debe poder ejecutarse en diferentes plataformas con cambios mínimos.
+**RNF-006. Portabilidad**: El sistema debe poder ejecutarse en diferentes plataformas con cambios mínimos.
 
-**Fiabilidad**: El sistema debe ser confiable y cumplir con los requisitos del usuario.
+**RNF-007. Fiabilidad**: El sistema debe ser confiable y cumplir con los requisitos del usuario.
 
-**Usabilidad**: El sistema debe ser fácil de usar y comprender.
+**RNF-008. Usabilidad**: El sistema debe ser fácil de usar y comprender.
 
-**Compatibilidad**: El sistema debe ser compatible con otros sistemas.
+**RNF-009. Compatibilidad**: El sistema debe ser compatible con otros sistemas.
 
-**Compliancia**: El sistema debe cumplir con todas las leyes y reglamentos aplicables.
+**RNF-010. Compliancia**: El sistema debe cumplir con todas las leyes y reglamentos aplicables.
 
 ## 4.4. Reglas de negocio
 **RN-001.** Un celador solo puede tener asignadas 10 camillas como máximo a la vez.
