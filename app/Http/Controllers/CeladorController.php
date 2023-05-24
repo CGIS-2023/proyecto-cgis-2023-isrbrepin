@@ -133,7 +133,7 @@ class CeladorController extends Controller
         else{
             session()->flash('warning', 'El celador no pudo borrarse. Es probable que se deba a que tenga asociada información como salas que dependen de él.');
         }
-        return redirect()->route('celador.index');
+        return redirect()->route('celadors.index');
     }
 }
 /*

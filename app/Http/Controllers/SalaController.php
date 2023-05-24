@@ -27,9 +27,9 @@ class SalaController extends Controller
     $salasQuery = Sala::query();
     $medicoFiltrado = $request->get('medico_nombre');
 
-
+    
     if ($medicoFiltrado) {
-        $salasQuery->whereHas('medico', function ($query) use ($medicoFiltrado) {
+        $salasQuery->whereHas('medico', function ($query) use ($medicoFiltrado) { //Este método permite realizar una consulta en relación a través de modelos relacionados.
             $query->whereHas('user', function ($query) use ($medicoFiltrado) {
                 $query->where('name', 'LIKE', "%$medicoFiltrado%");
             });
